@@ -7,10 +7,14 @@ namespace Engine {
 	Application::Application()
 	{
 		m_Window = std::unique_ptr<Window>(Window::Create());
-		std::cout << "in constructor" << std::endl;
+		m_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
 	}
 	Application::~Application()
 	{
+	}
+	void Application::OnEvent(Event& e)
+	{
+
 	}
 
 	void Application::Run()
