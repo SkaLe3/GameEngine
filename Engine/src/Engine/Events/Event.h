@@ -4,15 +4,14 @@
 #include "SFML/Window/Event.hpp"
 namespace Engine {
 
-	using EventType = sf::Event::EventType;
 	 
-	/*enum class EventType
+	enum class EventType
 	{
 		None = 0,
-		WindowClose,
-		KeyPressed, KeyReleased,
-		MouseButtonPressed, MouseButtonReleased, MouseMoved
-	};*/
+		WindowClose, WindowResize, WindowLostFocus, WindowGainedFocus,
+		KeyPressed, KeyReleased, KeyEntered,
+		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
+	};
 
 	class ENGINE_API Event
 	{

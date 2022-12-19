@@ -33,7 +33,7 @@
     <ClInclude Include="src\Engine\Events\KeyEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Events\MouseEvents.h">
+    <ClInclude Include="src\Engine\Events\MouseEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Events\ApplicationEvent.h">
@@ -46,6 +46,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Core\MouseCodes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Core\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

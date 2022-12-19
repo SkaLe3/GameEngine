@@ -16,10 +16,11 @@
     <ClInclude Include="src\Engine\Core\Core.h" />
     <ClInclude Include="src\Engine\Core\EntryPoint.h" />
     <ClInclude Include="src\Engine\Core\MouseCodes.h" />
+    <ClInclude Include="src\Engine\Core\Window.h" />
     <ClInclude Include="src\Engine\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Engine\Events\Event.h" />
     <ClInclude Include="src\Engine\Events\KeyEvent.h" />
-    <ClInclude Include="src\Engine\Events\MouseEvents.h" />
+    <ClInclude Include="src\Engine\Events\MouseEvent.h" />
     <ClInclude Include="src\Engine\Core\KeyCodes.h" />
     <ClInclude Include="src\pch.h" />
   </ItemGroup>
