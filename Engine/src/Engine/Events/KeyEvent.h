@@ -18,16 +18,14 @@ namespace Engine
 	class ENGINE_API KeyPressedEvent : public KeyEvent
 	{
 	public:
-		KeyPressedEvent(KeyCode keycode, bool isRepeat = false)
-			: KeyEvent(keycode), m_IsRepeat(isRepeat) {}
+		KeyPressedEvent(KeyCode keycode)
+			: KeyEvent(keycode)  {}
 
-		bool isRepeat() const { return m_IsRepeat; }
+		//bool isRepeat() const { return m_IsRepeat; }
 
 		static EventType GetStaticType() { return EventType::KeyPressed; }
 		virtual EventType GetEventType() const override { return GetStaticType(); }
 
-	private:
-		int m_IsRepeat;
 	};
 
 	class ENGINE_API KeyReleasedEvent : public KeyEvent
