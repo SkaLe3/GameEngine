@@ -5,7 +5,7 @@
 
 namespace Engine {
 
-	class MouseMovedEvent : public Event
+	class ENGINE_API MouseMovedEvent : public Event
 	{
 	public:
 		MouseMovedEvent(double x, double y) : m_MouseX(x), m_MouseY(y) {}
@@ -20,7 +20,22 @@ namespace Engine {
 		double m_MouseX, m_MouseY;
 	};
 
-	class MouseButtonEvent : public Event
+	class ENGINE_API MouseScrolledEvent : public Event
+	{
+	public:
+		MouseScrolledEvent(const double xOffset, const double yOffset)
+			: m_XOffset(xOffset), m_YOffset(yOffset) {}
+
+		double GetXOffset() { return m_XOffset; }
+		double GetYOffset() { return m_YOffset; }
+
+		static EventType GetStaticType() { return EventType::MouseScrolled; }
+		virtual EventType GetEventType() const override { return GetStaticType(); }
+	private:
+		double m_XOffset, m_YOffset;
+	};
+
+	class ENGINE_API MouseButtonEvent : public Event
 	{
 	public:
 		MouseCode GetMouseButton() const { return m_Button; }
@@ -31,7 +46,7 @@ namespace Engine {
 		MouseCode m_Button;
 	};
 
-	class MouseButtonPressedEvent : public MouseButtonEvent
+	class ENGINE_API MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(const MouseCode button) : MouseButtonEvent(button) {}
@@ -40,7 +55,7 @@ namespace Engine {
 		virtual EventType GetEventType() const override { return GetStaticType(); }
 	};
 
-	class MouseButtonReleasedEvent : public MouseButtonEvent
+	class ENGINE_API MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(const MouseCode button) : MouseButtonEvent(button) {}

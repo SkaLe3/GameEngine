@@ -5,17 +5,17 @@
 
 namespace Engine
 {
-	class KeyEvent : public Event
+	class ENGINE_API KeyEvent : public Event
 	{
 	public:
 		KeyCode GetKeyCode() const { return m_KeyCode; }
 
 	protected:
-		KeyEvent(int keycode) : m_KeyCode(keycode) {}
+		KeyEvent(KeyCode keycode) : m_KeyCode(keycode) {}
 		KeyCode m_KeyCode;
 	};
 
-	class KeyPressedEvent : public KeyEvent
+	class ENGINE_API KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(KeyCode keycode, bool isRepeat = false)
@@ -30,12 +30,21 @@ namespace Engine
 		int m_IsRepeat;
 	};
 
-	class KeyReleasedEvent : public KeyEvent
+	class ENGINE_API KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(const KeyCode keycode): KeyEvent(keycode) {}
 
 		static EventType GetStaticType() { return EventType::KeyReleased; }
+		virtual EventType GetEventType() const override { return GetStaticType(); }
+	};
+
+	class ENGINE_API KeyEnteredEvent : public KeyEvent
+	{
+	public:
+		KeyEnteredEvent(const KeyCode keycode) : KeyEvent(keycode) {}
+
+		static EventType GetStaticType() { return EventType::KeyEntered; }
 		virtual EventType GetEventType() const override { return GetStaticType(); }
 	};
 }

@@ -1,18 +1,20 @@
 #pragma once
 
 #include "Engine/Core/Core.h"
+#include "SFML/Window/Event.hpp"
+namespace Engine {
 
-namespace Engine 
-{
-	enum class EventType
+	using EventType = sf::Event::EventType;
+	 
+	/*enum class EventType
 	{
 		None = 0,
 		WindowClose,
 		KeyPressed, KeyReleased,
 		MouseButtonPressed, MouseButtonReleased, MouseMoved
-	};
+	};*/
 
-	class Event
+	class ENGINE_API Event
 	{
 	public:
 		virtual ~Event() = default;

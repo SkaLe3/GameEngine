@@ -4,7 +4,7 @@
 
 namespace Engine {
 
-	class WindowCloseEvent : public Event
+	class ENGINE_API WindowCloseEvent : public Event
 	{
 	public:
 		WindowCloseEvent() = default;
