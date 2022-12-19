@@ -1,12 +1,10 @@
 #include <Engine.h>
 
 
-class StillAliveApp : public Engine::Application
+class StillAliveApp : public  Engine::Application
 {
 public:
-	StillAliveApp()
-	{
-	}
+	StillAliveApp() :  Engine::Application() {}
 	~StillAliveApp()
 	{
 

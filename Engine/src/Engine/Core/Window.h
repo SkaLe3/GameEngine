@@ -2,7 +2,10 @@
 
 #include "Core.h"
 #include "Engine/Events/Event.h"
-#include "pch.h"
+#include <memory>
+#include <string>
+#include <functional>
+
 
 namespace Engine {
 
@@ -20,17 +23,18 @@ namespace Engine {
 
 	class ENGINE_API Window
 	{
+	public:
 		using EventCallbackFn = std::function<void(Event&)>;
 
 		virtual ~Window(){}
 
 		virtual void OnUpdate() = 0;
 		
-		virtual unsigned int GetWidth() = 0;
-		virtual unsigned int GetHeight() = 0;
+		virtual unsigned int GetWidth() const = 0;
+		virtual unsigned int GetHeight() const = 0;
 
 		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
 
-		static Window* Create(const WindowProperties& props = WindowProperties());
+		static std::unique_ptr<Window> Create(const WindowProperties& props = WindowProperties());
 	};
 }

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Engine/Core/Core.h"
-#include "SFML/Window/Event.hpp"
 namespace Engine {
 
 	 
