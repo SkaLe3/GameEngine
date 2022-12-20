@@ -14,9 +14,27 @@ namespace Engine {
 	}
 	void Application::OnEvent(Event& e)
 	{
+		std::cout << "in base" << std::endl;
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClosed));
 
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
+		{
+			if (e.m_Handled)
+				break;
+			(*--it)->OnEvent(e);
+		}
+
+	}
+
+	void Application::Run()
+	{
+		std::cout << "in run" << std::endl;
+		while (m_Running) {
+			for (Layer* layer : m_LayerStack)
+				layer->OnUpdate();
+			m_Window->OnUpdate();
+		}
 	}
 
 	void Application::PushLayer(Layer* layer)
@@ -38,12 +56,6 @@ namespace Engine {
 		return true;
 	}
 
-	void Application::Run()
-	{
-		std::cout << "in run" << std::endl;
-		while (m_Running) {
-			m_Window->OnUpdate();
-		}
-	}
+
 
 }
