@@ -20,13 +20,13 @@ namespace Engine {
 		virtual EventType GetEventType() const = 0;
 	};
 
-	class EventManager
+	class EventDispatcher
 	{
 	public:
-		EventManager(Event& event) : m_Event(event){}
+		EventDispatcher(Event& event) : m_Event(event){}
 
 		template<typename T, typename F>
-		bool Manage(const F& func)
+		bool Dispatch(const F& func)
 		{
 			if (m_Event.GetEventType() == T::GetStaticType())
 			{

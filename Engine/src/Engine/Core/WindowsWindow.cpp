@@ -102,6 +102,7 @@ namespace Engine {
 
 	void WindowsWindow::Shutdown()
 	{
+		m_Window.close();
 	}
 
 
