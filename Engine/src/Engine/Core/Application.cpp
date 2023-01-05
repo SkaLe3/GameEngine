@@ -14,7 +14,6 @@ namespace Engine {
 	}
 	void Application::OnEvent(Event& e)
 	{
-		std::cout << "in base" << std::endl;
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClosed));
 
@@ -29,7 +28,6 @@ namespace Engine {
 
 	void Application::Run()
 	{
-		std::cout << "in run" << std::endl;
 		while (m_Running) {
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();

@@ -6,7 +6,7 @@ class Example : public Engine::Layer
 {
 	void OnUpdate() override
 	{
-		std::cout << "updating" << std::endl;
+
 	}
 	void OnEvent(Engine::Event& event) override
 	{
@@ -18,7 +18,7 @@ class Example1 : public Engine::Layer
 {
 	void OnUpdate() override
 	{
-		std::cout << "----------" << std::endl;
+
 	}
 	void OnEvent(Engine::Event& event) override
 	{
