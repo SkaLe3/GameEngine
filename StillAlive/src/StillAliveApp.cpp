@@ -10,7 +10,7 @@ class Example : public Engine::Layer
 	}
 	void OnEvent(Engine::Event& event) override
 	{
-		std::cout << typeid(event.GetEventType()).name() << std::endl;
+
 	}
 };
 
@@ -18,11 +18,11 @@ class Example1 : public Engine::Layer
 {
 	void OnUpdate() override
 	{
-
+		//std::cout << Engine::Input::GetMousePosition().first << "\t" << Engine::Input::GetMousePosition().second<< std::endl;
 	}
 	void OnEvent(Engine::Event& event) override
 	{
-		std::cout << typeid(event.GetEventType()).name() << std::endl;
+
 	}
 };
 class StillAliveApp : public  Engine::Application
