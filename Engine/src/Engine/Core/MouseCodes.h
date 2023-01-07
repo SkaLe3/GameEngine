@@ -2,11 +2,11 @@
 
 namespace Engine {
 
-    using MouseCode = short;
+    using MouseCode = int16_t;
 
     namespace Mouse {
 
-        enum  Button
+        enum : MouseCode
         {
             // From SFML/Window/Mouse.hpp
 
