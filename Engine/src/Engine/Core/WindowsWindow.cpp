@@ -54,7 +54,7 @@ namespace Engine {
 			}
 			case sf::Event::TextEntered:
 			{
-				KeyEnteredEvent event(ev.key.code);
+				KeyEnteredEvent event(ev.TextEntered);
 				m_Data.EventCallback(event);
 				
 				break;
@@ -94,7 +94,6 @@ namespace Engine {
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
-
 		m_Window.create(sf::VideoMode(sf::Vector2u(m_Data.Width, m_Data.Height)), m_Data.Title);
 
 
