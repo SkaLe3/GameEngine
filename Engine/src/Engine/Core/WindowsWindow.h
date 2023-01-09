@@ -3,6 +3,8 @@
 #include "SFML/Graphics.hpp"
 #include "Engine/Events/Event.h"
 
+#include "Engine/Renderer/GraphicsContext.h"
+
 namespace Engine {
 
 
@@ -26,6 +28,7 @@ namespace Engine {
 		virtual void Shutdown();
 	private:
 		sf::RenderWindow m_Window;
+		std::unique_ptr<GraphicsContext> m_Context;
 		struct WindowData
 		{
 			std::string Title= "";

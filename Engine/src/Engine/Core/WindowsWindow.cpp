@@ -87,6 +87,8 @@ namespace Engine {
 			
 		}
 
+		m_Window.display();
+
 	}
 
 	void WindowsWindow::Init(const WindowProperties& props)
@@ -95,7 +97,8 @@ namespace Engine {
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
 		m_Window.create(sf::VideoMode(sf::Vector2u(m_Data.Width, m_Data.Height)), m_Data.Title);
-
+		m_Context = GraphicsContext::Create(&m_Window);
+		m_Context->Init();
 
 	}
 
