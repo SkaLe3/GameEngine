@@ -34,10 +34,6 @@ namespace Engine {
 	void Application::Run()
 	{
 		while (m_Running) {
-			static_cast<sf::RenderWindow*>(m_Window->GetNativeWindow())->clear();
-			sf::CircleShape shape(100.f);
-			shape.setFillColor(sf::Color::Green);
-			static_cast<sf::RenderWindow*>(m_Window->GetNativeWindow())->draw(shape);
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 			m_Window->OnUpdate();
