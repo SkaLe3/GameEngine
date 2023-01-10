@@ -12,11 +12,11 @@ namespace Engine {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None: std::cout << "RendererAPI::None" << std::endl; return nullptr;
+		case RendererAPI::API::None: std::cout << "RendererAPI::None" << std::endl; return nullptr;
 			// OpenGL currently isn't supported. It will be implemented later whily learning it
-		case RendererAPI::OpenGL: std::cout << "RendererAPI::OpenGL not supported" << std::endl; return nullptr;
+		case RendererAPI::API::OpenGL: std::cout << "RendererAPI::OpenGL not supported" << std::endl; return nullptr;
 
-		case RendererAPI::SFML: return std::make_unique<SFMLContext>(static_cast<sf::RenderWindow*>(window));
+		case RendererAPI::API::SFML: return std::make_unique<SFMLContext>(static_cast<sf::RenderWindow*>(window));
 		}
 		return nullptr;
 	}

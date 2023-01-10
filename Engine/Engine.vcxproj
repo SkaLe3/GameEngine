@@ -26,9 +26,11 @@
     <ClInclude Include="src\Engine\Core\KeyCodes.h" />
     <ClInclude Include="src\Engine\Input.h" />
     <ClInclude Include="src\Engine\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Engine\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Engine\Renderer\Renderer.h" />
     <ClInclude Include="src\Engine\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Libs\SFML\SFMLContext.h" />
+    <ClInclude Include="src\Libs\SFML\SFMLRendererAPI.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Engine\Core\WindowsWindow.h" />
   </ItemGroup>
@@ -39,8 +41,11 @@
     <ClCompile Include="src\Engine\Core\Window.cpp" />
     <ClCompile Include="src\Engine\Input.cpp" />
     <ClCompile Include="src\Engine\Renderer\GraphicsContext.cpp" />
+    <ClCompile Include="src\Engine\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Engine\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Engine\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Libs\SFML\SFMLContext.cpp" />
+    <ClCompile Include="src\Libs\SFML\SFMLRendererAPI.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -96,7 +101,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SFML_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);EG_BUILD_DLL</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Engine\src; $(SolutionDir)Engine\vendor\SFML\include; $(SolutionDir)Engine\vendor\gml;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Engine\src;$(SolutionDir)Engine\vendor\SFML\include;$(SolutionDir)Engine\vendor\glm;</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>

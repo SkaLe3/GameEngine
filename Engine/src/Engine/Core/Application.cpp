@@ -5,6 +5,11 @@
 #include "SFML/Graphics.hpp"
 
 
+
+// temp
+#include "Engine/Renderer/RenderCommand.h"
+
+
 namespace Engine {
 
 	Application* Application::s_Instance = nullptr;
@@ -33,10 +38,13 @@ namespace Engine {
 
 	void Application::Run()
 	{
+		sf::CircleShape shape(100.f);
+		shape.setFillColor(sf::Color::Green);
 		while (m_Running) {
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 			m_Window->OnUpdate();
+			RenderCommand::Draw(&shape);
 		}
 	}
 
