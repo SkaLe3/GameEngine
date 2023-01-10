@@ -3,7 +3,7 @@
 
 #include "Engine/Renderer/GraphicsContext.h"
 namespace sf {
-struct RenderWindow;
+class RenderWindow;
 }
 
 namespace Engine {

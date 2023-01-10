@@ -2,6 +2,9 @@
 #include "Application.h"
 #include "Window.h"
 
+#include "SFML/Graphics.hpp"
+
+
 namespace Engine {
 
 	Application* Application::s_Instance = nullptr;
@@ -11,7 +14,7 @@ namespace Engine {
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
 	}
-	Application::~Application()
+	Application::~Application() 
 	{
 	}
 	void Application::OnEvent(Event& e)
@@ -31,6 +34,10 @@ namespace Engine {
 	void Application::Run()
 	{
 		while (m_Running) {
+			static_cast<sf::RenderWindow*>(m_Window->GetNativeWindow())->clear();
+			sf::CircleShape shape(100.f);
+			shape.setFillColor(sf::Color::Green);
+			static_cast<sf::RenderWindow*>(m_Window->GetNativeWindow())->draw(shape);
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 			m_Window->OnUpdate();
