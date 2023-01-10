@@ -27,6 +27,7 @@
     <ClInclude Include="src\Engine\Input.h" />
     <ClInclude Include="src\Engine\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Engine\Renderer\Renderer.h" />
+    <ClInclude Include="src\Engine\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Libs\SFML\SFMLContext.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Engine\Core\WindowsWindow.h" />
