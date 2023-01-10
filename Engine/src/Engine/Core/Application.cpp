@@ -6,8 +6,7 @@
 
 
 
-// temp
-#include "Engine/Renderer/RenderCommand.h"
+#include "Engine/Renderer/Renderer.h"
 
 
 namespace Engine {
@@ -38,13 +37,21 @@ namespace Engine {
 
 	void Application::Run()
 	{
-		sf::CircleShape shape(100.f);
-		shape.setFillColor(sf::Color::Green);
+		
+		sf::ConvexShape convex(5);
+		convex.setPoint(0, sf::Vector2f(0, 0));
+		convex.setPoint(1, sf::Vector2f(150, 10));
+		convex.setPoint(2, sf::Vector2f(120, 90));
+		convex.setPoint(3, sf::Vector2f(30, 100));
+		convex.setPoint(4, sf::Vector2f(0, 50));
+		convex.setFillColor(sf::Color::Green);
 		while (m_Running) {
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 			m_Window->OnUpdate();
-			RenderCommand::Draw(&shape);
+			RenderCommand::SetClearColor(glm::vec4(0.2, 0.8, 0.8, 1));
+			RenderCommand::Clear();
+			RenderCommand::Draw(&convex);
 		}
 	}
 
