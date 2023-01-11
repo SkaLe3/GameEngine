@@ -59,7 +59,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Engine\src; $(SolutionDir)Engine\vendor</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Engine\src; $(SolutionDir)Engine\vendor;$(SolutionDir)StillAlive\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -90,7 +90,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Creatures\Player.cpp" />
+    <ClCompile Include="src\Weapon\Armory.cpp" />
+    <ClCompile Include="src\Creatures\Creature.cpp" />
     <ClCompile Include="src\StillAliveApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Creatures\Player.h" />
+    <ClInclude Include="src\Weapon\Armory.h" />
+    <ClInclude Include="src\Creatures\Creature.h" />
+    <ClInclude Include="src\Weapon\WeaponIntarface.h" />
+    <ClInclude Include="src\Weapon\WeaponModels.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
