@@ -1,11 +1,13 @@
 #include "Player.h"
 
-void Player::OnLeftMouseButtonPressed()
+bool Player::OnLeftMouseButtonPressed()
 {
 	Shoot();
+	return true; // Temporary
 }
 
-void Player::OnKeyRPressed()
+bool Player::OnKeyRPressed()
 {
 	ReloadWeapon();
+	return true; // Temporary
 }

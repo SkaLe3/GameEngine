@@ -12,7 +12,7 @@ namespace Engine {
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 
-	class ENGINE_API Event
+	class Event
 	{
 	public:
 		virtual ~Event() = default;

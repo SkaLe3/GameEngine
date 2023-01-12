@@ -5,7 +5,7 @@
 
 namespace Engine
 {
-	class ENGINE_API KeyEvent : public Event
+	class KeyEvent : public Event
 	{
 	public:
 		KeyCode GetKeyCode() const { return m_KeyCode; }
@@ -15,7 +15,7 @@ namespace Engine
 		KeyCode m_KeyCode;
 	};
 
-	class ENGINE_API KeyPressedEvent : public KeyEvent
+	class KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(KeyCode keycode)
@@ -28,7 +28,7 @@ namespace Engine
 
 	};
 
-	class ENGINE_API KeyReleasedEvent : public KeyEvent
+	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(const KeyCode keycode): KeyEvent(keycode) {}
@@ -37,7 +37,7 @@ namespace Engine
 		virtual EventType GetEventType() const override { return GetStaticType(); }
 	};
 
-	class ENGINE_API KeyEnteredEvent : public KeyEvent
+	class KeyEnteredEvent : public KeyEvent
 	{
 	public:
 		KeyEnteredEvent(const KeyCode keycode) : KeyEvent(keycode) {}

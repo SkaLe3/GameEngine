@@ -5,7 +5,7 @@ class Player :
 {
 public:
 	// Events
-	void OnLeftMouseButtonPressed();
-	void OnKeyRPressed();
+	bool OnLeftMouseButtonPressed();
+	bool OnKeyRPressed();
 };
 
