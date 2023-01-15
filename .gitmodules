@@ -1,0 +1,3 @@
+[submodule "Engine/vendor/GLFW"]
+	path = Engine/vendor/GLFW
+	url = https://github.com/TheCherno/GLFW
