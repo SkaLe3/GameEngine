@@ -23,15 +23,16 @@ namespace Engine {
 	class MouseScrolledEvent : public Event
 	{
 	public:
-		MouseScrolledEvent(const double yOffset)
-			:  m_YOffset(yOffset) {}
+		MouseScrolledEvent(const double yOffset, const double xOffset)
+			:  m_YOffset(yOffset), m_XOffset(xOffset) {}
 
 		double GetYOffset() { return m_YOffset; }
+		double GetXOffset() { return m_XOffset; }
 
 		static EventType GetStaticType() { return EventType::MouseScrolled; }
 		virtual EventType GetEventType() const override { return GetStaticType(); }
 	private:
-		double m_YOffset;
+		double m_YOffset, m_XOffset;
 	};
 
 	class MouseButtonEvent : public Event

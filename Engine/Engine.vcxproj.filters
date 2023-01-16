@@ -19,8 +19,8 @@
     <Filter Include="src\Libs">
       <UniqueIdentifier>{86A721CF-7274-7CDA-9B8D-6A8287B9B168}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Libs\SFML">
-      <UniqueIdentifier>{67825635-D342-D26B-9C7D-1BE908FD1648}</UniqueIdentifier>
+    <Filter Include="src\Libs\OpenGL">
+      <UniqueIdentifier>{FADDB1DE-6669-1FA3-6F7A-A297DB847BA3}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -57,6 +57,9 @@
     <ClInclude Include="src\Engine\Core\EntryPoint.h">
       <Filter>src\Engine\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Core\Input.h">
+      <Filter>src\Engine\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Engine\Core\KeyCodes.h">
       <Filter>src\Engine\Core</Filter>
     </ClInclude>
@@ -87,9 +90,6 @@
     <ClInclude Include="src\Engine\Events\MouseEvent.h">
       <Filter>src\Engine\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Input.h">
-      <Filter>src\Engine</Filter>
-    </ClInclude>
     <ClInclude Include="src\Engine\Renderer\GraphicsContext.h">
       <Filter>src\Engine\Renderer</Filter>
     </ClInclude>
@@ -102,11 +102,8 @@
     <ClInclude Include="src\Engine\Renderer\RendererAPI.h">
       <Filter>src\Engine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Libs\SFML\SFMLContext.h">
-      <Filter>src\Libs\SFML</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Libs\SFML\SFMLRendererAPI.h">
-      <Filter>src\Libs\SFML</Filter>
+    <ClInclude Include="src\Libs\OpenGL\OpenGLContext.h">
+      <Filter>src\Libs\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\pch.h">
       <Filter>src</Filter>
@@ -1364,6 +1361,9 @@
     <ClCompile Include="src\Engine\Core\Application.cpp">
       <Filter>src\Engine\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Core\Input.cpp">
+      <Filter>src\Engine\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\Engine\Core\Layer.cpp">
       <Filter>src\Engine\Core</Filter>
     </ClCompile>
@@ -1375,9 +1375,6 @@
     </ClCompile>
     <ClCompile Include="src\Engine\Core\WindowsWindow.cpp">
       <Filter>src\Engine\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\Input.cpp">
-      <Filter>src\Engine</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Renderer\GraphicsContext.cpp">
       <Filter>src\Engine\Renderer</Filter>
@@ -1391,11 +1388,8 @@
     <ClCompile Include="src\Engine\Renderer\RendererAPI.cpp">
       <Filter>src\Engine\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Libs\SFML\SFMLContext.cpp">
-      <Filter>src\Libs\SFML</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Libs\SFML\SFMLRendererAPI.cpp">
-      <Filter>src\Libs\SFML</Filter>
+    <ClCompile Include="src\Libs\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Libs\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\pch.cpp">
       <Filter>src</Filter>

@@ -8,7 +8,7 @@ namespace Engine {
 	{
 		None = 0,
 		WindowClose, WindowResize, WindowLostFocus, WindowGainedFocus,
-		KeyPressed, KeyReleased, KeyEntered,
+		KeyPressed, KeyReleased, KeyTyped,
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 

@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "RenderCommand.h"
-#include "Libs/SFML/SFMLRendererAPI.h"
+//#include "Libs/OpenGL/OpenGLRendererAPI.h"
 
 namespace Engine {
 
-	RendererAPI* RenderCommand::s_RendererAPI = new SFMLRendererAPI;
+	//RendererAPI* RenderCommand::s_RendererAPI = new OpenGLRendererAPI;
 }

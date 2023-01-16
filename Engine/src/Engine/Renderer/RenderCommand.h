@@ -17,9 +17,9 @@ namespace Engine {
 			s_RendererAPI->Clear();
 		}
 
-		static void Draw(sf::Shape* shape)
+		static void Draw()
 		{
-			s_RendererAPI->Draw(shape);
+			s_RendererAPI->Draw();
 		}
 	private:
 		static RendererAPI* s_RendererAPI;

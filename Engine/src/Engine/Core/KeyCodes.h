@@ -9,112 +9,137 @@ namespace Engine {
 
         enum : KeyCode
         {
-            // From SFML/Window/Keyboard.hpp
+			// From glfw3.h
+			Space = 32,
+			Apostrophe = 39, /* ' */
+			Comma = 44, /* , */
+			Minus = 45, /* - */
+			Period = 46, /* . */
+			Slash = 47, /* / */
 
-            KEY_A = 0,        //!< The A key
-            KEY_B,            //!< The B key
-            KEY_C,            //!< The C key
-            KEY_D,            //!< The D key
-            KEY_E,            //!< The E key
-            KEY_F,            //!< The F key
-            KEY_G,            //!< The G key
-            KEY_H,            //!< The H key
-            KEY_I,            //!< The I key
-            KEY_J,            //!< The J key
-            KEY_K,            //!< The K key
-            KEY_L,            //!< The L key
-            KEY_M,            //!< The M key
-            KEY_N,            //!< The N key
-            KEY_O,            //!< The O key
-            KEY_P,            //!< The P key
-            KEY_Q,            //!< The Q key
-            KEY_R,            //!< The R key
-            KEY_S,            //!< The S key
-            KEY_T,            //!< The T key
-            KEY_U,            //!< The U key
-            KEY_V,            //!< The V key
-            KEY_W,            //!< The W key
-            KEY_X,            //!< The X key
-            KEY_Y,            //!< The Y key
-            KEY_Z,            //!< The Z key
-            KEY_0,         //!< The 0 key
-            KEY_1,         //!< The 1 key
-            KEY_2,         //!< The 2 key
-            KEY_3,         //!< The 3 key
-            KEY_4,         //!< The 4 key
-            KEY_5,         //!< The 5 key
-            KEY_6,         //!< The 6 key
-            KEY_7,         //!< The 7 key
-            KEY_8,         //!< The 8 key
-            KEY_9,         //!< The 9 key
-            KEY_ESCAPE,       //!< The Escape key
-            KEY_LEFT_CONTROL,     //!< The left Control key
-            KEY_LEFT_SHIFT,       //!< The left Shift key
-            KEY_LEFT_ALT,         //!< The left Alt key
-            KEY_LEFT_SYSTEM,      //!< The left OS specific key: window (Windows and Linux), apple (MacOS X), ...
-            KEY_RIGHT_CONTROL,     //!< The right Control key
-            KEY_RIGHT_SHIFT,       //!< The right Shift key
-            KEY_RIGHT_ALT,         //!< The right Alt key
-            KEY_RIGHT_SYSTEM,      //!< The right OS specific key: window (Windows and Linux), apple (MacOS X), ...
-            KEY_MENU,         //!< The Menu key
-            KEY_LEFT_BRACKET,     //!< The [ key
-            KEY_RIGHT_BRACKET,     //!< The ] key
-            KEY_SEMICOLON,    //!< The ; key
-            KEY_COMMA,        //!< The , key
-            KEY_PERIOD,       //!< The . key
-            KEY_APOSTROPHE,   //!< The ' key
-            KEY_SLASH,        //!< The / key
-            KEY_BACKSLASH,    //!< The \ key
-            KEY_TILDE,        //!< The ~ key
-            KEY_EQUAL,        //!< The = key
-            KEY_MINUS,       //!< The - key (hyphen)
-            KEY_SPACE,        //!< The Space key
-            KEY_ENTER,        //!< The Enter/Return keys
-            KEY_BACKSPACE,    //!< The Backspace key
-            KEY_TAB,          //!< The Tabulation key
-            KEY_PAGE_UP,       //!< The Page up key
-            KEY_PAGE_DOWN,     //!< The Page down key
-            KEY_END,          //!< The End key
-            KEY_HOME,         //!< The Home key
-            KEY_INSERT,       //!< The Insert key
-            KEY_DELETE,       //!< The Delete key
-            KEY_KP_ADD,          //!< The + key
-            KEY_KP_SUBSTRACT,     //!< The - key (minus, usually from numpad)
-            KEY_KP_MULTIPLY,     //!< The * key
-            KEY_KP_DIVIDE,       //!< The / key
-            KEY_LEFT,         //!< Left arrow
-            KEY_RIGHT,        //!< Right arrow
-            KEY_UP,           //!< Up arrow
-            KEY_DOWN,         //!< Down arrow
-            KEY_KP_0,      //!< The numpad 0 key
-            KEY_KP_1,      //!< The numpad 1 key
-            KEY_KP_2,      //!< The numpad 2 key
-            KEY_KP_3,      //!< The numpad 3 key
-            KEY_KP_4,      //!< The numpad 4 key
-            KEY_KP_5,      //!< The numpad 5 key
-            KEY_KP_6,      //!< The numpad 6 key
-            KEY_KP_7,      //!< The numpad 7 key
-            KEY_KP_8,      //!< The numpad 8 key
-            KEY_KP_9,      //!< The numpad 9 key
-            KEY_F1,           //!< The F1 key
-            KEY_F2,           //!< The F2 key
-            KEY_F3,           //!< The F3 key
-            KEY_F4,           //!< The F4 key
-            KEY_F5,           //!< The F5 key
-            KEY_F6,           //!< The F6 key
-            KEY_F7,           //!< The F7 key
-            KEY_F8,           //!< The F8 key
-            KEY_F9,           //!< The F9 key
-            KEY_F10,          //!< The F10 key
-            KEY_F11,          //!< The F11 key
-            KEY_F12,          //!< The F12 key
-            KEY_F13,          //!< The F13 key
-            KEY_F14,          //!< The F14 key
-            KEY_F15,          //!< The F15 key
-            KEY_PAUSE,        //!< The Pause key
+			D0 = 48, /* 0 */
+			D1 = 49, /* 1 */
+			D2 = 50, /* 2 */
+			D3 = 51, /* 3 */
+			D4 = 52, /* 4 */
+			D5 = 53, /* 5 */
+			D6 = 54, /* 6 */
+			D7 = 55, /* 7 */
+			D8 = 56, /* 8 */
+			D9 = 57, /* 9 */
 
-            KeyCount //!< Keep last -- the total number of keyboard keys
-        };
+			Semicolon = 59, /* ; */
+			Equal = 61, /* = */
+
+			A = 65,
+			B = 66,
+			C = 67,
+			D = 68,
+			E = 69,
+			F = 70,
+			G = 71,
+			H = 72,
+			I = 73,
+			J = 74,
+			K = 75,
+			L = 76,
+			M = 77,
+			N = 78,
+			O = 79,
+			P = 80,
+			Q = 81,
+			R = 82,
+			S = 83,
+			T = 84,
+			U = 85,
+			V = 86,
+			W = 87,
+			X = 88,
+			Y = 89,
+			Z = 90,
+
+			LeftBracket = 91,  /* [ */
+			Backslash = 92,  /* \ */
+			RightBracket = 93,  /* ] */
+			GraveAccent = 96,  /* ` */
+
+			World1 = 161, /* non-US #1 */
+			World2 = 162, /* non-US #2 */
+
+			/* Function keys */
+			Escape = 256,
+			Enter = 257,
+			Tab = 258,
+			Backspace = 259,
+			Insert = 260,
+			Delete = 261,
+			Right = 262,
+			Left = 263,
+			Down = 264,
+			Up = 265,
+			PageUp = 266,
+			PageDown = 267,
+			Home = 268,
+			End = 269,
+			CapsLock = 280,
+			ScrollLock = 281,
+			NumLock = 282,
+			PrintScreen = 283,
+			Pause = 284,
+			F1 = 290,
+			F2 = 291,
+			F3 = 292,
+			F4 = 293,
+			F5 = 294,
+			F6 = 295,
+			F7 = 296,
+			F8 = 297,
+			F9 = 298,
+			F10 = 299,
+			F11 = 300,
+			F12 = 301,
+			F13 = 302,
+			F14 = 303,
+			F15 = 304,
+			F16 = 305,
+			F17 = 306,
+			F18 = 307,
+			F19 = 308,
+			F20 = 309,
+			F21 = 310,
+			F22 = 311,
+			F23 = 312,
+			F24 = 313,
+			F25 = 314,
+
+			/* Keypad */
+			KP0 = 320,
+			KP1 = 321,
+			KP2 = 322,
+			KP3 = 323,
+			KP4 = 324,
+			KP5 = 325,
+			KP6 = 326,
+			KP7 = 327,
+			KP8 = 328,
+			KP9 = 329,
+			KPDecimal = 330,
+			KPDivide = 331,
+			KPMultiply = 332,
+			KPSubtract = 333,
+			KPAdd = 334,
+			KPEnter = 335,
+			KPEqual = 336,
+
+			LeftShift = 340,
+			LeftControl = 341,
+			LeftAlt = 342,
+			LeftSuper = 343,
+			RightShift = 344,
+			RightControl = 345,
+			RightAlt = 346,
+			RightSuper = 347,
+			Menu = 348
+		};
 	}
-	
-}	
+}

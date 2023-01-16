@@ -2,11 +2,9 @@
 #include "Application.h"
 #include "Window.h"
 
-#include "SFML/Graphics.hpp"
-
-
-
+#include <glad/glad.h>
 #include "Engine/Renderer/Renderer.h"
+#include "Engine/Core/Input.h"
 
 
 namespace Engine {
@@ -28,9 +26,10 @@ namespace Engine {
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
 		{
+			(*--it)->OnEvent(e);
 			if (e.m_Handled)
 				break;
-			(*--it)->OnEvent(e);
+			
 		}
 
 	}
@@ -38,20 +37,14 @@ namespace Engine {
 	void Application::Run()
 	{
 		
-		sf::ConvexShape convex(5);
-		convex.setPoint(0, sf::Vector2f(0, 0));
-		convex.setPoint(1, sf::Vector2f(150, 10));
-		convex.setPoint(2, sf::Vector2f(120, 90));
-		convex.setPoint(3, sf::Vector2f(30, 100));
-		convex.setPoint(4, sf::Vector2f(0, 50));
-		convex.setFillColor(sf::Color::Green);
+		glClearColor(1, 0, 1, 1);
+		glClear(GL_COLOR_BUFFER_BIT);
+
 		while (m_Running) {
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 			m_Window->OnUpdate();
-			RenderCommand::SetClearColor(glm::vec4(0.2, 0.8, 0.8, 1));
-			RenderCommand::Clear();
-			RenderCommand::Draw(&convex);
+		
 		}
 	}
 
@@ -73,7 +66,4 @@ namespace Engine {
 		m_Running = false;
 		return true;
 	}
-
-
-
 }

@@ -8,16 +8,20 @@ namespace Engine {
 
         enum : MouseCode
         {
-            // From SFML/Window/Mouse.hpp
+			// From glfw3.h
+			Button0 = 0,
+			Button1 = 1,
+			Button2 = 2,
+			Button3 = 3,
+			Button4 = 4,
+			Button5 = 5,
+			Button6 = 6,
+			Button7 = 7,
 
-            Left,     //!< The left mouse button
-            Right,    //!< The right mouse button
-            Middle,   //!< The middle (wheel) mouse button
-            XButton1, //!< The first extra mouse button
-            XButton2, //!< The second extra mouse button
-
-            ButtonCount //!< Keep last -- the total number of mouse buttons
-        };
-    }
-	
+			ButtonLast = Button7,
+			ButtonLeft = Button0,
+			ButtonRight = Button1,
+			ButtonMiddle = Button2
+		};
+	}
 }

@@ -12,13 +12,13 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
---IncludeDir["GLFW"] = "Engine/vendor/GLFW/include"
---IncludeDir["Glad"] = "Engine/vendor/Glad/include"
+IncludeDir["GLFW"] = "Engine/vendor/GLFW/include"
+IncludeDir["Glad"] = "Engine/vendor/Glad/include"
 IncludeDir["glm"] = "Engine/vendor/glm"
 
 group "Dependencies"
---	include "Engine/vendor/GLFW"
---	include "Engine/vendor/Glad"
+	include "Engine/vendor/GLFW"
+	include "Engine/vendor/Glad"
 
 group ""
 
@@ -51,8 +51,8 @@ project "Engine"
 	includedirs
 	{
 		"%{prj.name}/src",
---		"%{IncludeDir.GLFW}",
---		"%{IncludeDir.Glad}",
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
 		"%{IncludeDir.glm}"
 	}
 
@@ -95,10 +95,10 @@ project "StillAlive"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/Creatures/**.h",
-		"%{prj.name}/src/Weapon/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/src/Creatures/**.h",
 		"%{prj.name}/src/Creatures/**.cpp",
+		"%{prj.name}/src/Weapon/**.h",
 		"%{prj.name}/src/Weapon/**.cpp"
 	}
 
@@ -106,6 +106,7 @@ project "StillAlive"
 	{
 		"Engine/src",
 		"Engine/vendor",
+		"StillAlive/src",
 		"%{IncludeDir.glm}"
 	}
 

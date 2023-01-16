@@ -37,12 +37,12 @@ namespace Engine
 		virtual EventType GetEventType() const override { return GetStaticType(); }
 	};
 
-	class KeyEnteredEvent : public KeyEvent
+	class KeyTypedEvent : public KeyEvent
 	{
 	public:
-		KeyEnteredEvent(const KeyCode keycode) : KeyEvent(keycode) {}
+		KeyTypedEvent(const KeyCode keycode) : KeyEvent(keycode) {}
 
-		static EventType GetStaticType() { return EventType::KeyEntered; }
+		static EventType GetStaticType() { return EventType::KeyTyped; }
 		virtual EventType GetEventType() const override { return GetStaticType(); }
 	};
 }
