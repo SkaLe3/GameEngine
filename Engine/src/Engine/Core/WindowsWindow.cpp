@@ -14,6 +14,11 @@ namespace Engine {
 
 	static bool s_GLFWInitialized = false;
 
+	static void GLFWErrorCallback(int error, const char* description)
+	{
+		EG_ERROR("GLFW Error (" , error,"): ", description);
+	}
+
 	WindowsWindow::WindowsWindow(const WindowProperties& props)
 	{
 		Init(props);
@@ -33,19 +38,23 @@ namespace Engine {
 	}
 
 
-
 	void WindowsWindow::Init(const WindowProperties& props)
 	{
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
 
+		EG_INFO("Creating window ", props.Title, "(", props.Width, "x", props.Height, ")");
+
 		if (!s_GLFWInitialized)
 		{
 			int success = glfwInit();
-			// Add initialization failure error
+			EG_ASSERT(success, "Could not initialize GLFW!");
 			s_GLFWInitialized = true;
-		}m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
+			glfwSetErrorCallback(GLFWErrorCallback);
+		}
+
+		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 
 		m_Context = GraphicsContext::Create(m_Window);
 		m_Context->Init();

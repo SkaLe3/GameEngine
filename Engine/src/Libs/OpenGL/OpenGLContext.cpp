@@ -8,17 +8,22 @@ namespace Engine {
 
 	OpenGLContext::OpenGLContext(GLFWwindow* windowHandle) : m_WindowHandle(windowHandle)
 	{
-
+		EG_ASSERT(windowHandle, "Window handle is null!")
 	}
 
 	void OpenGLContext::Init()
 	{
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		EG_ASSERT(status, "Failed to initialize Glad!");
+		EG_INFO("OpenGL Info:");
+		EG_INFO("\tVendor: ", glGetString(GL_VENDOR));
+		EG_INFO("\tRenderer: ", glGetString(GL_RENDERER));
+		EG_INFO("\tVersion: ", glGetString(GL_VERSION));
 	}
 
 	void OpenGLContext::SwapBuffers()
 	{
-
+		glfwSwapBuffers(m_WindowHandle);
 	}
 }

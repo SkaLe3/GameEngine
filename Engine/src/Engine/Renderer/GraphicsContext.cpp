@@ -12,7 +12,7 @@ namespace Engine {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::API::None: std::cout << "RendererAPI::None" << std::endl; return nullptr;
+		case RendererAPI::API::None: EG_ERROR("RendererAPI::None"); return nullptr;
 
 		case RendererAPI::API::OpenGL: return std::make_unique<OpenGLContext>(static_cast<GLFWwindow*>(window));
 		}
