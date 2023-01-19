@@ -20,6 +20,8 @@ namespace Engine {
 		EG_INFO("\tVendor: ", glGetString(GL_VENDOR));
 		EG_INFO("\tRenderer: ", glGetString(GL_RENDERER));
 		EG_INFO("\tVersion: ", glGetString(GL_VERSION));
+
+		EG_ASSERT(GLVersion.major > 4 || (GLVersion.major == 4 && GLVersion.minor >= 5), "StillAlive requires at least OpenGL version 4.5!");
 	}
 
 	void OpenGLContext::SwapBuffers()
