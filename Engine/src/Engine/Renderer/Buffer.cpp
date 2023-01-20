@@ -9,11 +9,11 @@ namespace Engine {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::API::None: EG_ERROR("RendererAPI::None"); return nullptr;
+		case RendererAPI::API::None: EG_ASSERT(false, "RendererAPI::None"); return nullptr;
 
 		case RendererAPI::API::OpenGL: return new OpenGLVertexBuffer(vertices, size);
 		}
-		EG_ERROR("Unknown Renderer API");
+		EG_ASSERT(false, "Unknown Renderer API");
 		return nullptr;
 	}
 
@@ -21,11 +21,11 @@ namespace Engine {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::API::None: EG_ERROR("RendererAPI::None"); return nullptr;
+		case RendererAPI::API::None: EG_ASSERT(false, "RendererAPI::None"); return nullptr;
 
 		case RendererAPI::API::OpenGL: return new OpenGLIndexBuffer(indices, count);
 		}
-		EG_ERROR("Unknown Renderer API");
+		EG_ASSERT(false, "Unknown Renderer API");
 		return nullptr;
 	}
 

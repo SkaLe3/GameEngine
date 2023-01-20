@@ -67,7 +67,7 @@ namespace Engine {
 #define EG_TRACE(...) Engine::Log::GetLogger()->Trace(__VA_ARGS__)
 #define EG_ERROR(...) Engine::Log::GetLogger()->Err(__VA_ARGS__)
 #define EG_STATE(...) Engine::Log::GetLogger()->State(__VA_ARGS__)
-#define EG_ASSERT(b, ...)  if (!(b)) { Engine::Log::GetLogger()->Err(__VA_ARGS__); }
+#define EG_ASSERT(b, ...)  if (!(b)) { Engine::Log::GetLogger()->Err(__VA_ARGS__); __debugbreak();}
 
 #else
 #define EG_INFO
