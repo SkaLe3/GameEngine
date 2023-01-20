@@ -7,6 +7,7 @@
 
 
 #include "Engine/Renderer/Shader.h"
+#include "Engine/Renderer/Buffer.h"
 namespace Engine {
 
 	class Application
@@ -31,9 +32,11 @@ namespace Engine {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		unsigned int m_VertexArray;
 
 		std::unique_ptr<Shader> m_Shader;
+		std::unique_ptr<VertexBuffer> m_VertexBuffer;
+		std::unique_ptr<IndexBuffer> m_IndexBuffer;
 		static Application* s_Instance;
 	};
 	
