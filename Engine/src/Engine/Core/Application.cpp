@@ -2,9 +2,10 @@
 #include "Application.h"
 #include "Window.h"
 
-#include <glad/glad.h>
 #include "Engine/Renderer/Renderer.h"
 #include "Engine/Core/Input.h"
+
+#include "Engine/Renderer/Renderer.h"
 
 
 
@@ -12,25 +13,7 @@ namespace Engine {
 
 	Application* Application::s_Instance = nullptr;
 
-	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)
-	{
-		switch (type)
-		{
-		case Engine::ShaderDataType::FLoat:		return GL_FLOAT;
-		case Engine::ShaderDataType::FLoat2:	return GL_FLOAT;
-		case Engine::ShaderDataType::Float3:	return GL_FLOAT;		
-		case Engine::ShaderDataType::Float4:	return GL_FLOAT;		
-		case Engine::ShaderDataType::Mat3:		return GL_FLOAT;
-		case Engine::ShaderDataType::Mat4:		return GL_FLOAT;
-		case Engine::ShaderDataType::Int:		return GL_INT;
-		case Engine::ShaderDataType::Int2:		return GL_INT;
-		case Engine::ShaderDataType::Int3:		return GL_INT;
-		case Engine::ShaderDataType::Int4:		return GL_INT;
-		case Engine::ShaderDataType::Bool:		return GL_BOOL;
-		}
-		EG_ASSERT(false, "Unknown ShaderDataType!");
-		return 0;
-	}
+	
 	Application::Application()
 	{
 		Log::GetLogger()->Init();
@@ -38,10 +21,7 @@ namespace Engine {
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
 
-		glGenVertexArrays(1, &m_VertexArray);
-		glBindVertexArray(m_VertexArray);
-
-		
+		m_VertexArray.reset(VertexArray::Create());
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f, 0.8f, 0.1f, 0.8f, 1.0f,
@@ -49,35 +29,47 @@ namespace Engine {
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.1f, 1.0f 
 		};
 
-		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+		std::shared_ptr<VertexBuffer> vertexBuffer;
+		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 
-		{BufferLayout layout = {
+		BufferLayout layout = {
 			{ ShaderDataType::Float3, "a_Position"},
 			{ ShaderDataType::Float4, "a_Color"}
 		};
 
-		m_VertexBuffer->SetLayout(layout); }
+		vertexBuffer->SetLayout(layout); 
 
-		uint32_t index = 0;
-		const auto& layout = m_VertexBuffer->GetLayout();
-		for (const auto& element : layout)
-		{
-			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(
-				index,
-				element.GetComponentCount(),
-				ShaderDataTypeToOpenGLBaseType(element.Type),
-				element.Normalized ? GL_TRUE: GL_FALSE,
-				layout.GetStride(),
-				(const void*)element.Offset
-			);
-
-			index++;
-		}
 		
+		m_VertexArray->AddVertexBuffer(vertexBuffer);
 		unsigned int indices[3] = { 0, 1, 2 };
-		m_IndexBuffer.reset(IndexBuffer::Create(indices, 3));
+		std::shared_ptr<IndexBuffer> indexBuffer;
+		indexBuffer.reset(IndexBuffer::Create(indices, 3));
+		m_VertexArray->SetIndexBuffer(indexBuffer);
 
+
+		float squarevertices[3 * 4] = {
+			-0.5f, -0.5f, 0.0f,
+			 0.5f, -0.5f, 0.0f,
+			 0.5f,  0.5f, 0.0f,
+			-0.5f,  0.5f, 0.0f,
+
+		};
+
+		m_SquareVA.reset(VertexArray::Create());
+		std::shared_ptr<VertexBuffer> squareVB;
+		squareVB.reset(VertexBuffer::Create(squarevertices, sizeof(squarevertices)));
+
+
+		BufferLayout squarelayout = {
+			{ ShaderDataType::Float3, "a_Position"}
+		};
+		squareVB->SetLayout(squarelayout);
+		m_SquareVA->AddVertexBuffer(squareVB);
+
+		unsigned int squareindices[6] = { 0, 1, 2, 2, 3, 0 };
+		std::shared_ptr<IndexBuffer> squareIB;
+		squareIB.reset(IndexBuffer::Create(squareindices, 6));
+		m_SquareVA->SetIndexBuffer(squareIB);
 
 
 		std::string	vertexSrc = R"(
@@ -112,6 +104,38 @@ namespace Engine {
 			}	
 		)";
 		m_Shader.reset(new Shader(vertexSrc, fragmentSrc));
+
+		std::string	vertexSrc2 = R"(
+			#version 330 core
+
+			layout(location = 0) in vec3 a_Position;
+
+
+			out vec3 v_Position;
+			out vec4 v_Color;
+
+			void main()
+			{
+				v_Position = a_Position;
+				gl_Position = vec4(a_Position, 1.0);
+			}	
+		)";
+
+		std::string	fragmentSrc2 = R"(
+			#version 330 core
+
+			layout(location = 0) out vec4 a_Color;
+			in vec3 v_Position;
+
+			void main()
+			{
+				a_Color = vec4(0.2, 0.3, 0.8, 1.0);
+
+				
+			}	
+		)";
+
+		m_Shader2.reset(new Shader(vertexSrc2, fragmentSrc2));
 	}
 
 
@@ -135,16 +159,21 @@ namespace Engine {
 
 	void Application::Run()
 	{
-		
-		
-
 		while (m_Running) {
-			glClearColor(0.15f, 0.15f, 0.15f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
 
+
+			RenderCommand::SetClearColor({ 0.15f, 0.15f, 0.15f, 1 });
+			RenderCommand::Clear();
+
+			
+			m_Shader2->Bind();
+			Renderer::Submit(m_SquareVA);
+			 
 			m_Shader->Bind();
-			glBindVertexArray(m_VertexArray);
-			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_VertexArray);
+
+			Renderer::EndScene();
+
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();

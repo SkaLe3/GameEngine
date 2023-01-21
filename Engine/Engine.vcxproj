@@ -121,8 +121,11 @@
     <ClInclude Include="src\Engine\Renderer\Renderer.h" />
     <ClInclude Include="src\Engine\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Engine\Renderer\Shader.h" />
+    <ClInclude Include="src\Engine\Renderer\VertexArray.h" />
     <ClInclude Include="src\Libs\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Libs\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Libs\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Libs\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
@@ -555,8 +558,11 @@
     <ClCompile Include="src\Engine\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Engine\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Engine\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Engine\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Libs\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Libs\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Libs\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Libs\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
