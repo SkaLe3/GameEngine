@@ -93,7 +93,13 @@
     <ClInclude Include="src\Engine\Events\MouseEvent.h">
       <Filter>src\Engine\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Renderer\Buffer.h">
+      <Filter>src\Engine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Engine\Renderer\GraphicsContext.h">
+      <Filter>src\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Renderer\OrthographicCamera.h">
       <Filter>src\Engine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\RenderCommand.h">
@@ -108,7 +114,19 @@
     <ClInclude Include="src\Engine\Renderer\Shader.h">
       <Filter>src\Engine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Renderer\VertexArray.h">
+      <Filter>src\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Libs\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Libs\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Libs\OpenGL\OpenGLContext.h">
+      <Filter>src\Libs\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Libs\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Libs\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Libs\OpenGL\OpenGLVertexArray.h">
       <Filter>src\Libs\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\pch.h">
@@ -1362,12 +1380,6 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Renderer\Buffer.h" />
-    <ClInclude Include="src\Libs\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Engine\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Libs\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Libs\OpenGL\OpenGLRendererAPI.h" />
-    <ClInclude Include="src\Engine\Renderer\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Core\Application.cpp">
@@ -1391,7 +1403,13 @@
     <ClCompile Include="src\Engine\Core\WindowsWindow.cpp">
       <Filter>src\Engine\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Renderer\Buffer.cpp">
+      <Filter>src\Engine\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Engine\Renderer\GraphicsContext.cpp">
+      <Filter>src\Engine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Renderer\OrthographicCamera.cpp">
       <Filter>src\Engine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Renderer\RenderCommand.cpp">
@@ -1406,17 +1424,23 @@
     <ClCompile Include="src\Engine\Renderer\Shader.cpp">
       <Filter>src\Engine\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Renderer\VertexArray.cpp">
+      <Filter>src\Engine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Libs\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Libs\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Libs\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Libs\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Libs\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Libs\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Libs\OpenGL\OpenGLVertexArray.cpp">
       <Filter>src\Libs\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\pch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Libs\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Engine\Renderer\VertexArray.cpp" />
-    <ClCompile Include="src\Libs\OpenGL\OpenGLVertexArray.cpp" />
-    <ClCompile Include="src\Libs\OpenGL\OpenGLRendererAPI.cpp" />
-    <ClCompile Include="src\Engine\Renderer\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>
