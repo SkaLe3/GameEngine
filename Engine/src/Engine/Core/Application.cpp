@@ -14,7 +14,7 @@ namespace Engine {
 	Application* Application::s_Instance = nullptr;
 
 	
-	Application::Application()
+	Application::Application() : m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
 	{
 		Log::GetLogger()->Init();
 		s_Instance = this;
@@ -78,6 +78,8 @@ namespace Engine {
 			layout(location = 0) in vec3 a_Position;
 			layout(location = 1) in vec4 a_Color;
 
+			uniform mat4 u_ViewProjection;
+
 			out vec3 v_Position;
 			out vec4 v_Color;
 
@@ -85,7 +87,7 @@ namespace Engine {
 			{
 				v_Position = a_Position;
 				v_Color = a_Color;
-				gl_Position = vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
 			}	
 		)";
 
@@ -110,6 +112,7 @@ namespace Engine {
 
 			layout(location = 0) in vec3 a_Position;
 
+			uniform mat4 u_ViewProjection;
 
 			out vec3 v_Position;
 			out vec4 v_Color;
@@ -117,7 +120,7 @@ namespace Engine {
 			void main()
 			{
 				v_Position = a_Position;
-				gl_Position = vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
 			}	
 		)";
 
@@ -165,12 +168,14 @@ namespace Engine {
 			RenderCommand::SetClearColor({ 0.15f, 0.15f, 0.15f, 1 });
 			RenderCommand::Clear();
 
-			
-			m_Shader2->Bind();
-			Renderer::Submit(m_SquareVA);
-			 
-			m_Shader->Bind();
-			Renderer::Submit(m_VertexArray);
+			m_Camera.SetPosition({ 0.5f, 0.5f, 0.0f });
+			m_Camera.Setrotation(45.0f);
+
+			Renderer::BeginScene(m_Camera);
+
+
+			Renderer::Submit(m_Shader2, m_SquareVA);	 
+			Renderer::Submit(m_Shader, m_VertexArray);
 
 			Renderer::EndScene();
 

@@ -8,7 +8,7 @@ namespace Engine {
 
 	OpenGLContext::OpenGLContext(GLFWwindow* windowHandle) : m_WindowHandle(windowHandle)
 	{
-		EG_ASSERT(windowHandle, "Window handle is null!")
+		EG_ASSERT(windowHandle, "Window handle is null!");
 	}
 
 	void OpenGLContext::Init()

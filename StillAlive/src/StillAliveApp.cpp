@@ -19,7 +19,7 @@ class Example1 : public Engine::Layer
 {
 	void OnUpdate() override
 	{
-		//std::cout << Engine::Input::GetMousePosition().first << "\t" << Engine::Input::GetMousePosition().second<< std::endl;
+
 	}
 	void OnEvent(Engine::Event& event) override
 	{

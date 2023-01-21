@@ -1367,6 +1367,7 @@
     <ClInclude Include="src\Engine\Renderer\VertexArray.h" />
     <ClInclude Include="src\Libs\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Libs\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Engine\Renderer\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Core\Application.cpp">
@@ -1416,5 +1417,6 @@
     <ClCompile Include="src\Engine\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Libs\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Libs\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Engine\Renderer\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>
