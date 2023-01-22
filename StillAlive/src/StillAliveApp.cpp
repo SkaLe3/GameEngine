@@ -3,6 +3,7 @@
 
 #include "glm/glm/glm.hpp"
 
+
 class Example : public Engine::Layer
 {
 public:
@@ -130,17 +131,22 @@ public:
 	}
 	void OnUpdate() override
 	{
-		if (Engine::Input::IsKeyPressed(Engine::Key::A))
-			m_CameraPosition.x -= m_CameraSpeed;
 
-		/*
+		
+		if (Engine::Input::IsKeyPressed(Engine::Key::A)) {
+			m_CameraPosition.x -= m_CameraSpeed;
+			std::cout << "it works!" << std::endl;
+		}
+
 		if (Engine::Input::IsKeyPressed(Engine::Key::D))
 			m_CameraPosition.x += m_CameraSpeed;
+
 		if (Engine::Input::IsKeyPressed(Engine::Key::S))
 			m_CameraPosition.y -= m_CameraSpeed;
+
 		if (Engine::Input::IsKeyPressed(Engine::Key::W))
 			m_CameraPosition.y += m_CameraSpeed;
-		*/
+		
 
 		/*
 		if (Engine::Input::IsKeyPressed(Engine::Key::Right))
