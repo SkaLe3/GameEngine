@@ -61,6 +61,7 @@ namespace Engine {
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 
+		SetVSync(true);
 		// Set GLFW callbacks
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
 			{
@@ -156,6 +157,22 @@ namespace Engine {
 	{
 		glfwDestroyWindow(m_Window);
 		glfwTerminate();
+	}
+
+	void WindowsWindow::SetVSync(bool enabled)
+	{
+
+		if (enabled)
+			glfwSwapInterval(1);
+		else
+			glfwSwapInterval(0);
+
+		m_Data.VSync = enabled;
+	}
+
+	bool WindowsWindow::IsVSync() const
+	{
+		return m_Data.VSync;
 	}
 
 

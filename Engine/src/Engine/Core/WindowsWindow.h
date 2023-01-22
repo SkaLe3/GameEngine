@@ -20,7 +20,11 @@ namespace Engine {
 		// Window attributes
 		void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
 
+		virtual void SetVSync(bool enabled) override;
+		virtual bool IsVSync() const override;
+
 		virtual void* GetNativeWindow() const{ return m_Window; }
+
 	private:
 		virtual void Init(const WindowProperties& props);
 		virtual void Shutdown();
@@ -32,6 +36,7 @@ namespace Engine {
 			std::string Title= "";
 			unsigned int Width = 0, Height = 0;
 
+			bool VSync;
 			EventCallbackFn EventCallback;
 		};
 

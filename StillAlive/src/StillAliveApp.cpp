@@ -3,6 +3,7 @@
 
 #include "glm/glm/glm.hpp"
 
+#include "glm/gtc/matrix_transform.hpp"
 
 class Example : public Engine::Layer
 {
@@ -10,6 +11,7 @@ public:
 	Example() : Layer(), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
 
 	{
+		Engine::Application::Get().GetWindow().SetVSync(0);
 		m_VertexArray.reset(Engine::VertexArray::Create());
 
 		float vertices[3 * 7] = {
@@ -68,6 +70,7 @@ public:
 			layout(location = 1) in vec4 a_Color;
 
 			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
 
 			out vec3 v_Position;
 			out vec4 v_Color;
@@ -76,7 +79,7 @@ public:
 			{
 				v_Position = a_Position;
 				v_Color = a_Color;
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 			}	
 		)";
 
@@ -102,6 +105,7 @@ public:
 			layout(location = 0) in vec3 a_Position;
 
 			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
 
 			out vec3 v_Position;
 			out vec4 v_Color;
@@ -109,7 +113,7 @@ public:
 			void main()
 			{
 				v_Position = a_Position;
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 			}	
 		)";
 
@@ -129,25 +133,26 @@ public:
 
 		m_Shader2.reset(new Engine::Shader(vertexSrc2, fragmentSrc2));
 	}
-	void OnUpdate() override
+	void OnUpdate(Engine::Timestep ts) override
 	{
-
-		
+		EG_TRACE("FPS Debug: ", 1.0/ts);
+		std::cout << "FPS Release: " << int(1/ts) << std::endl;
 		if (Engine::Input::IsKeyPressed(Engine::Key::A)) 
-			m_CameraPosition.x -= m_CameraSpeed;
+			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
 
-		if (Engine::Input::IsKeyPressed(Engine::Key::D))
-			m_CameraPosition.x += m_CameraSpeed;
+		else if (Engine::Input::IsKeyPressed(Engine::Key::D))
+			m_CameraPosition.x += m_CameraMoveSpeed * ts;
 
 		if (Engine::Input::IsKeyPressed(Engine::Key::S))
-			m_CameraPosition.y -= m_CameraSpeed;
+			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
 
-		if (Engine::Input::IsKeyPressed(Engine::Key::W))
-			m_CameraPosition.y += m_CameraSpeed;
-		if (Engine::Input::IsKeyPressed(Engine::Key::Space)) {
-			m_CameraPosition.x = 0;
-			m_CameraPosition.y = 0;
-		}
+		else if (Engine::Input::IsKeyPressed(Engine::Key::W))
+			m_CameraPosition.y += m_CameraMoveSpeed * ts;
+		if (Engine::Input::IsKeyPressed(Engine::Key::Left))
+			m_CameraRotation += m_CameraRotationSpeed * ts;
+		if (Engine::Input::IsKeyPressed(Engine::Key::Right))
+			m_CameraRotation -= m_CameraRotationSpeed * ts;
+
 
 
 
@@ -156,12 +161,22 @@ public:
 		Engine::RenderCommand::Clear();
 
 		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.Setrotation(0.0f);
+		m_Camera.Setrotation(m_CameraRotation);
 
 		Engine::Renderer::BeginScene(m_Camera);
 
 
-		Engine::Renderer::Submit(m_Shader2, m_SquareVA);
+		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.01f));
+		for (int y = 0; y < 100; y++) 
+		{
+
+			for (int x = 0; x < 100; x++)
+			{
+				glm::vec3 pos(x * 0.016f, y * 0.016f, 0.0f);
+			glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
+				Engine::Renderer::Submit(m_Shader2, m_SquareVA, transform);
+			}
+		}
 		Engine::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Engine::Renderer::EndScene();
@@ -181,7 +196,10 @@ private:
 
 	Engine::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition; 
-	float m_CameraSpeed = 0.005f;
+	float m_CameraRotation = 0.0f;
+	float m_CameraMoveSpeed = 5.0f;
+	float m_CameraRotationSpeed = 180.0f;
+
 };
 
 
@@ -190,7 +208,6 @@ class StillAliveApp : public  Engine::Application
 public:
 	StillAliveApp()
 	{
-
 		PushLayer(new Example());
 	}
 	~StillAliveApp()

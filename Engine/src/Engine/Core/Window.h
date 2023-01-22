@@ -16,8 +16,8 @@ namespace Engine {
 		unsigned int Height;
 
 		WindowProperties(const std::string& title = "Engine",
-			unsigned int width = 1280,
-			unsigned int height = 720)
+			unsigned int width = 1920,
+			unsigned int height = 1080)
 			: Title(title), Width(width), Height(height) {}
 	};
 
@@ -34,6 +34,9 @@ namespace Engine {
 		virtual unsigned int GetHeight() const = 0;
 
 		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
+
+		virtual void SetVSync(bool enabled) = 0;
+		virtual bool IsVSync() const = 0;
 
 		virtual void* GetNativeWindow() const = 0;
 
