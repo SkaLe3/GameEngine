@@ -44,12 +44,6 @@ namespace Engine {
 			
 		}
 
-		if (e.GetEventType() == EventType::KeyPressed)
-		{
-			if(static_cast<KeyPressedEvent&>(e).GetKeyCode() == GLFW_KEY_D)
-			std::cout << "key D state: " << glfwGetKey(static_cast<GLFWwindow*>(m_Window->GetNativeWindow()), GLFW_KEY_D) << std::endl;
-		}
-
 	}
 
 	void Application::Run()

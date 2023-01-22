@@ -133,10 +133,8 @@ public:
 	{
 
 		
-		if (Engine::Input::IsKeyPressed(Engine::Key::A)) {
+		if (Engine::Input::IsKeyPressed(Engine::Key::A)) 
 			m_CameraPosition.x -= m_CameraSpeed;
-			std::cout << "it works!" << std::endl;
-		}
 
 		if (Engine::Input::IsKeyPressed(Engine::Key::D))
 			m_CameraPosition.x += m_CameraSpeed;
@@ -146,18 +144,12 @@ public:
 
 		if (Engine::Input::IsKeyPressed(Engine::Key::W))
 			m_CameraPosition.y += m_CameraSpeed;
-		
+		if (Engine::Input::IsKeyPressed(Engine::Key::Space)) {
+			m_CameraPosition.x = 0;
+			m_CameraPosition.y = 0;
+		}
 
-		/*
-		if (Engine::Input::IsKeyPressed(Engine::Key::Right))
-			m_CameraPosition.x += m_CameraSpeed;
 
-		if (Engine::Input::IsKeyPressed(Engine::Key::Down))
-			m_CameraPosition.y -= m_CameraSpeed;
-
-		if (Engine::Input::IsKeyPressed(Engine::Key::Up))
-			m_CameraPosition.y += m_CameraSpeed;
-		*/
 
 
 		Engine::RenderCommand::SetClearColor({ 0.15f, 0.15f, 0.15f, 1 });
@@ -189,14 +181,14 @@ private:
 
 	Engine::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition; 
-	float m_CameraSpeed = 0.02f;
+	float m_CameraSpeed = 0.005f;
 };
 
 
 class StillAliveApp : public  Engine::Application
 {
 public:
-	StillAliveApp() : Engine::Application()
+	StillAliveApp()
 	{
 
 		PushLayer(new Example());

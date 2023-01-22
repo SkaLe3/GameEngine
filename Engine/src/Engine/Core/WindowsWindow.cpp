@@ -54,6 +54,7 @@ namespace Engine {
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
+		EG_ASSERT(m_Window, "Window or Context creation failed");
 
 		m_Context = GraphicsContext::Create(m_Window);
 		m_Context->Init();

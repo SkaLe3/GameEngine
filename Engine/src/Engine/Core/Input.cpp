@@ -12,7 +12,6 @@ namespace Engine {
 	{
 		auto* window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
 		auto state = glfwGetKey(window, static_cast<int32_t>(keycode));
-		std::cout << "IsKeyPressed state : " << state << std::endl;
 		return state == GLFW_PRESS;
 
 	}
@@ -20,8 +19,7 @@ namespace Engine {
 	bool Input::IsMouseButtonPressed(const MouseCode button)
 	{
 		auto* window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
-		auto state = glfwGetMouseButton(window, static_cast<int32_t>(button));
-		
+		auto state = glfwGetMouseButton(window, static_cast<int32_t>(button));	
 		return state == GLFW_PRESS;
 	}
 	glm::vec2 Input::GetMousePosition()
