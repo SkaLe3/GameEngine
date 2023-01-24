@@ -58,7 +58,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;EG_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\GLFW\include;vendor\Glad\include;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\GLFW\include;vendor\Glad\include;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -79,7 +79,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;EG_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\GLFW\include;vendor\Glad\include;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\GLFW\include;vendor\Glad\include;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -123,10 +123,13 @@
     <ClInclude Include="src\Engine\Renderer\Renderer.h" />
     <ClInclude Include="src\Engine\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Engine\Renderer\Shader.h" />
+    <ClInclude Include="src\Engine\Renderer\Texture.h" />
     <ClInclude Include="src\Engine\Renderer\VertexArray.h" />
     <ClInclude Include="src\Libs\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Libs\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Libs\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Libs\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Libs\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Libs\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -545,6 +548,7 @@
     <ClInclude Include="vendor\glm\glm\vec3.hpp" />
     <ClInclude Include="vendor\glm\glm\vec4.hpp" />
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
+    <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Core\Application.cpp" />
@@ -561,14 +565,18 @@
     <ClCompile Include="src\Engine\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Engine\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Engine\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Engine\Renderer\Texture.cpp" />
     <ClCompile Include="src\Engine\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Libs\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Libs\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Libs\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Libs\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Libs\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="src\Libs\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="vendor\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

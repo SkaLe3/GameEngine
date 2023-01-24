@@ -15,6 +15,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Engine/vendor/GLFW/include"
 IncludeDir["Glad"] = "Engine/vendor/Glad/include"
 IncludeDir["glm"] = "Engine/vendor/glm"
+IncludeDir["stb_image"] = "Engine/vendor/stb_image"
 
 group "Dependencies"
 	include "Engine/vendor/GLFW"
@@ -39,6 +40,8 @@ project "Engine"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
@@ -53,7 +56,8 @@ project "Engine"
 		"%{prj.name}/src",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links 
@@ -107,7 +111,8 @@ project "StillAlive"
 		"Engine/src",
 		"Engine/vendor",
 		"StillAlive/src",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links
