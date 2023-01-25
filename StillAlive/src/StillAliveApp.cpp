@@ -16,7 +16,7 @@ public:
 
 	{
 		Engine::Application::Get().GetWindow().SetVSync(0);
-		m_VertexArray.reset(Engine::VertexArray::Create());
+		m_VertexArray = Engine::VertexArray::Create();
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f, 0.8f, 0.1f, 0.8f, 1.0f,
@@ -25,7 +25,7 @@ public:
 		};
 
 		Engine::Ref<Engine::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Engine::VertexBuffer::Create(vertices, sizeof(vertices)));
+		vertexBuffer = Engine::VertexBuffer::Create(vertices, sizeof(vertices));
 
 		Engine::BufferLayout layout = {
 			{ Engine::ShaderDataType::Float3, "a_Position"},
@@ -38,7 +38,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 		unsigned int indices[3] = { 0, 1, 2 };
 		Engine::Ref<Engine::IndexBuffer> indexBuffer;
-		indexBuffer.reset(Engine::IndexBuffer::Create(indices, 3));
+		indexBuffer = Engine::IndexBuffer::Create(indices, 3);
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 
@@ -50,9 +50,9 @@ public:
 
 		};
 
-		m_SquareVA.reset(Engine::VertexArray::Create());
+		m_SquareVA = Engine::VertexArray::Create();
 		Engine::Ref<Engine::VertexBuffer> squareVB;
-		squareVB.reset(Engine::VertexBuffer::Create(squarevertices, sizeof(squarevertices)));
+		squareVB = Engine::VertexBuffer::Create(squarevertices, sizeof(squarevertices));
 
 
 		Engine::BufferLayout squarelayout = {
@@ -64,7 +64,7 @@ public:
 
 		unsigned int squareindices[6] = { 0, 1, 2, 2, 3, 0 };
 		Engine::Ref<Engine::IndexBuffer> squareIB;
-		squareIB.reset(Engine::IndexBuffer::Create(squareindices, 6));
+		squareIB = Engine::IndexBuffer::Create(squareindices, 6);
 		m_SquareVA->SetIndexBuffer(squareIB);
 
 
@@ -102,7 +102,8 @@ public:
 				
 			}	
 		)";
-		m_Shader.reset(Engine::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = Engine::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
+
 
 		std::string	vertexSrc2 = R"(
 			#version 330 core
@@ -138,49 +139,17 @@ public:
 			}	
 		)";
 
-		m_Shader2.reset(Engine::Shader::Create(vertexSrc2, fragmentSrc2));
+		m_Shader2 = Engine::Shader::Create("FlatColor", vertexSrc2, fragmentSrc2);
 
-		std::string	textureVertexSrc = R"(
-			#version 330 core
+		
 
-			layout(location = 0) in vec3 a_Position;
-			layout(location = 1) in vec2 a_TexCoord;
-
-			uniform mat4 u_ViewProjection;
-			uniform mat4 u_Transform;
-			
-			out vec2 v_TexCoord;
-
-			void main()
-			{
-				v_TexCoord = a_TexCoord;
-				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
-			}	
-		)";
-
-		std::string	textureFragmentSrc2 = R"(
-			#version 330 core
-
-			layout(location = 0) out vec4 a_Color;
-			
-			in vec2 v_TexCoord;
-			uniform sampler2D u_Texture;
-
-			void main()
-			{
-				a_Color = texture(u_Texture, v_TexCoord);
-
-				
-			}	
-		)";
-
-		m_TextureShader.reset(Engine::Shader::Create(textureVertexSrc, textureFragmentSrc2));
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_Texture = Engine::Texture2D::Create("assets/textures/CheckerBoard.png");
 		m_TextureLogo = Engine::Texture2D::Create("assets/textures/StillAliveCat.png");
 
-		std::static_pointer_cast<Engine::OpenGLShader>(m_TextureShader)->Bind();
-		std::static_pointer_cast<Engine::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+		std::static_pointer_cast<Engine::OpenGLShader>(textureShader)->Bind();
+		std::static_pointer_cast<Engine::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
 	void OnUpdate(Engine::Timestep ts) override
 	{
@@ -230,10 +199,11 @@ public:
 			}
 		}
 
+		auto textureShader = m_ShaderLibrary.Get("Texture");
 		m_Texture->Bind();
-		Engine::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Engine::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		m_TextureLogo->Bind();
-		Engine::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Engine::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 
 		//Engine::Renderer::Submit(m_Shader, m_VertexArray);
@@ -246,11 +216,12 @@ public:
 	}
 
 private:
+	Engine::ShaderLibrary m_ShaderLibrary;
 	Engine::Ref<Engine::Shader> m_Shader;
 	std::shared_ptr<Engine::VertexArray> m_VertexArray;
 
 
-	std::shared_ptr<Engine::Shader> m_Shader2, m_TextureShader;
+	std::shared_ptr<Engine::Shader> m_Shader2;
 	std::shared_ptr<Engine::VertexArray> m_SquareVA;
 
 	Engine::Ref<Engine::Texture2D> m_Texture;
