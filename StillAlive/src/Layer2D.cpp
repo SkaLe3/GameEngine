@@ -11,7 +11,7 @@ Sandbox2D::Sandbox2D()
 
 void Sandbox2D::OnAttach()
 {
-
+	m_CheckerBoard = Engine::Texture2D::Create("assets/textures/CheckerBoard.png");
 
 }
 
@@ -30,12 +30,13 @@ void Sandbox2D::OnUpdate(Engine::Timestep ts)
 
 	Engine::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-	Engine::Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, { 0.8f, 0.2f, 0.3f, 1.0f });
+	Engine::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
+	Engine::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
+	for(int i = 0; i < 10000; i++)
+	Engine::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_CheckerBoard);
 
 	Engine::Renderer2D::EndScene();
 
-	//std::static_pointer_cast<Engine::OpenGLShader>(m_FlatColorShader)->Bind();
-	//std::static_pointer_cast<Engine::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat4("u_Color", m_SquareColor);
 }
 
 void Sandbox2D::OnEvent(Engine::Event& e)
