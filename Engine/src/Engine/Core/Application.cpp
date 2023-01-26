@@ -21,6 +21,8 @@ namespace Engine {
 	
 	Application::Application()
 	{
+		EG_PROFILE_FUNCTION();
+
 		Log::GetLogger()->Init();
 		s_Instance = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
@@ -55,8 +57,10 @@ namespace Engine {
 
 	void Application::Run()
 	{
+		 
 		while (m_Running) 
 		{
+			EG_PROFILE_SCOPE("Runloop");
 			float time = (float)glfwGetTime(); 
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
@@ -73,6 +77,8 @@ namespace Engine {
 
 	void Application::PushLayer(Layer* layer)
 	{
+		EG_PROFILE_FUNCTION();
+
 		m_LayerStack.PushLayer(layer);
 		layer->OnAttach();
 
@@ -81,7 +87,6 @@ namespace Engine {
 	void Application::PopLayer(Layer* layer)
 	{
 		m_LayerStack.PopLayer(layer);
-		layer->OnDetach();
 	}
 
 	bool Application::OnWindowClosed(WindowCloseEvent& e)

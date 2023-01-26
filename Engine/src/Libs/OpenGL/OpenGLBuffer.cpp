@@ -19,6 +19,7 @@ namespace Engine {
 
 	void OpenGLVertexBuffer::Bind() const
 	{
+
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
 	}
 
@@ -44,6 +45,7 @@ namespace Engine {
 
 	void OpenGLIndexBuffer::Bind() const
 	{
+
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
 	}
 

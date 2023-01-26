@@ -22,6 +22,8 @@ void Sandbox2D::OnDetach()
 
 void Sandbox2D::OnUpdate(Engine::Timestep ts)
 {
+	EG_PROFILE_FUNCTION();
+
 	m_CameraController.OnUpdate(ts);
 	Engine::RenderCommand::SetClearColor({ 0.15f, 0.15f, 0.15f, 1 });
 	Engine::RenderCommand::Clear();
@@ -32,7 +34,6 @@ void Sandbox2D::OnUpdate(Engine::Timestep ts)
 
 	Engine::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
 	Engine::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
-	for(int i = 0; i < 10000; i++)
 	Engine::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_CheckerBoard);
 
 	Engine::Renderer2D::EndScene();

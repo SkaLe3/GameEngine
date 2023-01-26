@@ -30,6 +30,7 @@ namespace Engine {
 
 	void WindowsWindow::OnUpdate()
 	{
+		EG_PROFILE_FUNCTION();
 		
 		glfwPollEvents();
 		m_Context->SwapBuffers();
@@ -39,6 +40,8 @@ namespace Engine {
 
 	void WindowsWindow::Init(const WindowProperties& props)
 	{
+		EG_PROFILE_FUNCTION();
+
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;

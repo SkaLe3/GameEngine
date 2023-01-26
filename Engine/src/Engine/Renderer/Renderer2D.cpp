@@ -20,6 +20,8 @@ namespace Engine {
 
 	void Renderer2D::Init()
 	{
+		EG_PROFILE_FUNCTION();
+
 		s_Data = new Renderer2DStorage();
 
 		s_Data->QuadVertexArray = VertexArray::Create();
