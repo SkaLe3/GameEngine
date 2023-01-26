@@ -1,4 +1,5 @@
 #include <Engine.h>
+#include <Engine/Core/EntryPoint.h>
 #include <iostream>
 
 #include "glm/glm/glm.hpp"
@@ -7,6 +8,7 @@
 
 #include "Libs/OpenGL/OpenGLShader.h"
 #include "Engine/Renderer/Shader.h"
+#include "Layer2D.h"
 
 
 class Example : public Engine::Layer
@@ -15,7 +17,6 @@ public:
 	Example() : Layer(), m_CameraController(1920.0f/1080.0f, true)
 
 	{
-		Engine::Application::Get().GetWindow().SetVSync(0);
 		m_VertexArray = Engine::VertexArray::Create();
 
 		float vertices[3 * 7] = {
@@ -219,7 +220,8 @@ class StillAliveApp : public  Engine::Application
 public:
 	StillAliveApp()
 	{
-		PushLayer(new Example());
+		//PushLayer(new Example());
+		PushLayer(new Sandbox2D);
 	}
 	~StillAliveApp()
 	{

@@ -24,6 +24,7 @@
     <ClInclude Include="src\Weapon\WeaponModels.h">
       <Filter>Weapon</Filter>
     </ClInclude>
+    <ClInclude Include="src\Layer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Creatures\Creature.cpp">
@@ -36,8 +37,10 @@
     <ClCompile Include="src\Weapon\Armory.cpp">
       <Filter>Weapon</Filter>
     </ClCompile>
+    <ClCompile Include="src\Layer2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\shaders\Texture.glsl" />
+    <None Include="assets\shaders\FlatColor.glsl" />
   </ItemGroup>
 </Project>

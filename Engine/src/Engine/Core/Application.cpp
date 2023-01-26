@@ -3,6 +3,7 @@
 #include "Window.h"
 
 #include "Engine/Renderer/Renderer.h"
+#include "Engine/Renderer/Renderer2D.h"
 #include "Engine/Core/Input.h"
 
 #include "Engine/Renderer/Renderer.h"
@@ -27,6 +28,7 @@ namespace Engine {
 
 		
 		Renderer::Init();
+
 
 		
 	}

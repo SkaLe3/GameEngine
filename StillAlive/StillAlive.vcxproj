@@ -95,6 +95,7 @@
   <ItemGroup>
     <ClInclude Include="src\Creatures\Creature.h" />
     <ClInclude Include="src\Creatures\Player.h" />
+    <ClInclude Include="src\Layer2D.h" />
     <ClInclude Include="src\Weapon\Armory.h" />
     <ClInclude Include="src\Weapon\WeaponIntarface.h" />
     <ClInclude Include="src\Weapon\WeaponModels.h" />
@@ -102,6 +103,7 @@
   <ItemGroup>
     <ClCompile Include="src\Creatures\Creature.cpp" />
     <ClCompile Include="src\Creatures\Player.cpp" />
+    <ClCompile Include="src\Layer2D.cpp" />
     <ClCompile Include="src\StillAliveApp.cpp" />
     <ClCompile Include="src\Weapon\Armory.cpp" />
   </ItemGroup>
@@ -111,6 +113,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="assets\shaders\FlatColor.glsl" />
     <None Include="assets\shaders\Texture.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

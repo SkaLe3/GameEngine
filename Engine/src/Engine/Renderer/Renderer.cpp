@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Renderer.h"
+#include "Renderer2D.h"
 #include "Libs/OpenGL/OpenGLShader.h"
+
 namespace Engine {
 
 	Renderer::SceneData* Renderer::m_SceneData = new Renderer::SceneData;
@@ -8,6 +10,7 @@ namespace Engine {
 	void Renderer::Init()
 	{
 		RenderCommand::Init();
+		Renderer2D::Init();
 	}
 
 	void Renderer::OnWindowResized(uint32_t width, uint32_t height)

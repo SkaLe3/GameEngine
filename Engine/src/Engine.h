@@ -11,7 +11,6 @@
 #include "Engine/Core/Input.h"
 #include "Engine/Core/KeyCodes.h"
 #include "Engine/Core/MouseCodes.h"
-#include "Engine/Core/EntryPoint.h"
 
 #include "Engine/Renderer/OrthographicCameraController.h"
 
@@ -23,6 +22,7 @@
 
 // ---Renderer------------------------
 #include "Engine/Renderer/Renderer.h"
+#include "Engine/Renderer/Renderer2D.h"
 #include "Engine/Renderer/RenderCommand.h"
 #include "Engine/Renderer/OrthographicCamera.h"
 
