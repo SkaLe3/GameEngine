@@ -13,6 +13,8 @@
 #include "Engine/Core/MouseCodes.h"
 #include "Engine/Core/EntryPoint.h"
 
+#include "Engine/Renderer/OrthographicCameraController.h"
+
 
 #include "Engine/Events/Event.h"
 #include "Engine/Events/KeyEvent.h"
@@ -23,6 +25,7 @@
 #include "Engine/Renderer/Renderer.h"
 #include "Engine/Renderer/RenderCommand.h"
 #include "Engine/Renderer/OrthographicCamera.h"
+
 #include "Engine/Renderer/Buffer.h"
 #include "Engine/Renderer/VertexArray.h"
 #include "Engine/Renderer/Shader.h"

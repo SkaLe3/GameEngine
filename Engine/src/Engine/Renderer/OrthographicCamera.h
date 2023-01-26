@@ -14,6 +14,8 @@ namespace Engine {
 		const float GetRotation() { return m_Rotation; }
 		void Setrotation(float rotation);
 
+		void SetProjection(float left, float right, float bottom, float top);
+
 		const glm::mat4& GetProjectionMatrix() const { return m_ProjectionMatrix; }
 		const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; }
 		const glm::mat4& GetViewProjectionMatrix() const { return m_ViewProjectionMatrix; }
@@ -28,5 +30,7 @@ namespace Engine {
 		float m_Rotation = 0.0f;
 
 	};
+
+
 
 }

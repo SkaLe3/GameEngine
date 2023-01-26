@@ -12,7 +12,7 @@
 class Example : public Engine::Layer
 {
 public:
-	Example() : Layer(), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
+	Example() : Layer(), m_CameraController(1920.0f/1080.0f, true)
 
 	{
 		Engine::Application::Get().GetWindow().SetVSync(0);
@@ -153,34 +153,13 @@ public:
 	}
 	void OnUpdate(Engine::Timestep ts) override
 	{
-		//EG_TRACE("FPS Debug: ", int(1.0/ts));
-		if (Engine::Input::IsKeyPressed(Engine::Key::A)) 
-			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
-
-		else if (Engine::Input::IsKeyPressed(Engine::Key::D))
-			m_CameraPosition.x += m_CameraMoveSpeed * ts;
-
-		if (Engine::Input::IsKeyPressed(Engine::Key::S))
-			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
-
-		else if (Engine::Input::IsKeyPressed(Engine::Key::W))
-			m_CameraPosition.y += m_CameraMoveSpeed * ts;
-		if (Engine::Input::IsKeyPressed(Engine::Key::Left))
-			m_CameraRotation += m_CameraRotationSpeed * ts;
-		if (Engine::Input::IsKeyPressed(Engine::Key::Right))
-			m_CameraRotation -= m_CameraRotationSpeed * ts;
-
-
-
-
-
+		m_CameraController.OnUpdate(ts);
 		Engine::RenderCommand::SetClearColor({ 0.15f, 0.15f, 0.15f, 1 });
 		Engine::RenderCommand::Clear();
 
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.Setrotation(m_CameraRotation);
 
-		Engine::Renderer::BeginScene(m_Camera);
+
+		Engine::Renderer::BeginScene(m_CameraController.GetCamera());
 		 
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
@@ -210,9 +189,9 @@ public:
 
 		Engine::Renderer::EndScene();
 	}
-	void OnEvent(Engine::Event& event) override
+	void OnEvent(Engine::Event& e) override
 	{
-
+		m_CameraController.OnEvent(e);
 	}
 
 private:
@@ -227,11 +206,8 @@ private:
 	Engine::Ref<Engine::Texture2D> m_Texture;
 	Engine::Ref<Engine::Texture2D> m_TextureLogo;
 
-	Engine::OrthographicCamera m_Camera;
-	glm::vec3 m_CameraPosition; 
-	float m_CameraRotation = 0.0f;
-	float m_CameraMoveSpeed = 5.0f;
-	float m_CameraRotationSpeed = 180.0f;
+	Engine::OrthographicCameraController m_CameraController;
+
 
 	glm::vec3 m_SquareColor = { 0.2f, 0.4f, 0.8f };
 
