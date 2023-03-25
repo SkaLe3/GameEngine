@@ -1,6 +1,6 @@
-workspace "StillAlive"
+workspace "EngineSkl"
 	architecture "x64"
-	startproject "StillAlive"
+	startproject "SandBox"
 
 	configurations
 	{
@@ -86,8 +86,8 @@ project "Engine"
 		optimize "on"
 
 
-project "StillAlive"
-	location "StillAlive"
+project "SandBox"
+	location "SandBox"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++20"
@@ -99,18 +99,14 @@ project "StillAlive"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp",
-		"%{prj.name}/src/Creatures/**.h",
-		"%{prj.name}/src/Creatures/**.cpp",
-		"%{prj.name}/src/Weapon/**.h",
-		"%{prj.name}/src/Weapon/**.cpp"
+		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs
 	{
 		"Engine/src",
 		"Engine/vendor",
-		"StillAlive/src",
+		"SandBox/src",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.stb_image}"
 	}
