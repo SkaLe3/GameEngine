@@ -15,6 +15,7 @@
     <ClInclude Include="src\Creatures\Player.h">
       <Filter>Creatures</Filter>
     </ClInclude>
+    <ClInclude Include="src\Layer2D.h" />
     <ClInclude Include="src\Weapon\Armory.h">
       <Filter>Weapon</Filter>
     </ClInclude>
@@ -24,7 +25,6 @@
     <ClInclude Include="src\Weapon\WeaponModels.h">
       <Filter>Weapon</Filter>
     </ClInclude>
-    <ClInclude Include="src\Layer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Creatures\Creature.cpp">
@@ -33,14 +33,10 @@
     <ClCompile Include="src\Creatures\Player.cpp">
       <Filter>Creatures</Filter>
     </ClCompile>
+    <ClCompile Include="src\Layer2D.cpp" />
     <ClCompile Include="src\StillAliveApp.cpp" />
     <ClCompile Include="src\Weapon\Armory.cpp">
       <Filter>Weapon</Filter>
     </ClCompile>
-    <ClCompile Include="src\Layer2D.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="assets\shaders\Texture.glsl" />
-    <None Include="assets\shaders\FlatColor.glsl" />
   </ItemGroup>
 </Project>
