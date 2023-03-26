@@ -28,6 +28,8 @@ void Sandbox2D::OnUpdate(Engine::Timestep ts)
 	Engine::RenderCommand::SetClearColor({ 0.15f, 0.15f, 0.15f, 1 });
 	Engine::RenderCommand::Clear();
 
+	static float rotation = 0.0f;
+	rotation += ts * 50.0f;
 
 
 	Engine::Renderer2D::BeginScene(m_CameraController.GetCamera());
@@ -36,7 +38,8 @@ void Sandbox2D::OnUpdate(Engine::Timestep ts)
 	//Engine::Renderer2D::DrawRotatedQuad({ -0.6f, 0.8f }, { 0.7f, 0.7f }, 60, { 0.8f, 0.5f, 0.3f, 1.0f });
 	Engine::Renderer2D::DrawQuad({ -0.6f, 0.8f }, { 0.7f, 0.7f }, { 0.8f, 0.5f, 0.3f, 1.0f });
 	Engine::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
-	Engine::Renderer2D::DrawQuad({ -5.0f, -5.0f, -0.1f }, { 10.0f, 10.0f }, m_CheckerBoard, 10);
+	Engine::Renderer2D::DrawQuad({  0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_CheckerBoard, 10);
+	Engine::Renderer2D::DrawRotatedQuad({ -0.5f, -0.5f, 0.0f }, { 1.0f, 1.0f },rotation, m_CheckerBoard, 20);
 
 	Engine::Renderer2D::EndScene();
 
