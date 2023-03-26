@@ -18,7 +18,8 @@ private:
 	Engine::Ref<Engine::Shader> m_FlatColorShader;
 
 	Engine::Ref<Engine::Texture2D> m_CheckerBoard;
-
+	Engine::Ref<Engine::Texture2D> m_SpriteSheet;
+	Engine::Ref<Engine::SubTexture2D> m_Stairs, m_TextureTree;
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f }; 
 
