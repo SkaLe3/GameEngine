@@ -89,6 +89,11 @@ namespace Engine {
 		m_LayerStack.PopLayer(layer);
 	}
 
+	void Application::Close()
+	{
+		m_Running = false;
+	}
+
 	bool Application::OnWindowClosed(WindowCloseEvent& e)
 	{
 		m_Running = false;
