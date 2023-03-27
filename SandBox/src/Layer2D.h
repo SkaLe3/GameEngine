@@ -21,6 +21,8 @@ private:
 	Engine::Ref<Engine::Texture2D> m_SpriteSheet;
 	Engine::Ref<Engine::SubTexture2D> m_Stairs, m_TextureTree;
 
+	Engine::Ref<Engine::Scene> m_ActiveScene;
+
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f }; 
 
 };
