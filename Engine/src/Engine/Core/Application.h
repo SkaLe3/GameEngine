@@ -11,7 +11,7 @@ namespace Engine {
 	class Application
 	{
 	public:
-		Application();
+		Application(const std::string& name = "Engine App");
 		virtual ~Application();
 
 		void Run();
