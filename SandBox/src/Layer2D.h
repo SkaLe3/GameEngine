@@ -13,6 +13,7 @@ public:
 	void OnEvent(Engine::Event& e) override;
 private:
 	Engine::OrthographicCameraController m_CameraController;
+	Engine::Entity m_CameraEntity;
 
 	Engine::Ref<Engine::VertexArray> m_SquareVA;
 	Engine::Ref<Engine::Shader> m_FlatColorShader;

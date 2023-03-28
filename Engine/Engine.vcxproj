@@ -100,6 +100,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine.h" />
+    <ClInclude Include="src\Engine\Renderer\Camera.h" />
     <ClInclude Include="src\Engine\Core\Application.h" />
     <ClInclude Include="src\Engine\Core\Core.h" />
     <ClInclude Include="src\Engine\Core\EntryPoint.h" />
@@ -132,6 +133,8 @@
     <ClInclude Include="src\Engine\Scene\Components.h" />
     <ClInclude Include="src\Engine\Scene\Entity.h" />
     <ClInclude Include="src\Engine\Scene\Scene.h" />
+    <ClInclude Include="src\Engine\Scene\SceneCamera.h" />
+    <ClInclude Include="src\Engine\Scene\ScriptableEntity.h" />
     <ClInclude Include="src\Libs\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Libs\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Libs\OpenGL\OpenGLRendererAPI.h" />
@@ -579,6 +582,7 @@
     <ClCompile Include="src\Engine\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Engine\Scene\Entity.cpp" />
     <ClCompile Include="src\Engine\Scene\Scene.cpp" />
+    <ClCompile Include="src\Engine\Scene\SceneCamera.cpp" />
     <ClCompile Include="src\Libs\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Libs\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Libs\OpenGL\OpenGLRendererAPI.cpp" />

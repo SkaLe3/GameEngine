@@ -22,6 +22,7 @@
 
 #include "Engine/Scene/Scene.h"
 #include "Engine/Scene/Entity.h"
+#include "Engine/Scene/ScriptableEntity.h"
 #include "Engine/Scene/Components.h"
 
 // ---Renderer------------------------

@@ -27,7 +27,7 @@ namespace Engine {
 		template <typename T>
 		bool HasComponent()
 		{
-			return m_Scene->m_Registry.all_of<T>(m_EntityHandle);
+			return m_Scene->m_Registry.any_of<T>(m_EntityHandle);
 		}
 
 		template <typename T>
@@ -37,9 +37,9 @@ namespace Engine {
 			m_Scene->m_Registry.remove<T>(m_EntityHandle);
 		}
 
-		operator bool() const { return (int32_t)m_EntityHandle != 0; }
+		operator bool() const { return m_EntityHandle != entt::null; }
 	private:
-		entt::entity m_EntityHandle{ 0 };
+		entt::entity m_EntityHandle{ entt::null };
 		Scene* m_Scene = nullptr; //12
 		 
 	};

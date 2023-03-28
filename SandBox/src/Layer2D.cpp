@@ -1,6 +1,7 @@
 #include "Layer2D.h"
 
 #include "Libs/OpenGL/OpenGLShader.h"
+#include <glm/gtc/matrix_transform.hpp>
 #include <Engine.h>
 
 Sandbox2D::Sandbox2D()
@@ -21,6 +22,42 @@ void Sandbox2D::OnAttach()
 
 	auto square = m_ActiveScene->CreateEntity("Square");
 	square.AddComponent<Engine::SpriteRendererComponent>(glm::vec4{0.0f, 1.0f, 0.0f, 1.0f});
+
+	m_CameraEntity = m_ActiveScene->CreateEntity("Camera");
+	m_CameraEntity.AddComponent<Engine::CameraComponent>();
+
+
+	class CameraController : public Engine::ScriptableEntity
+	{
+	public:
+		void OnCreate()
+		{
+			//GetComponent<Engine::TransformComponent>();
+			std::cout << "OnCreate!" << std::endl;
+		}
+
+		void OnDestroy()
+		{
+
+		}
+
+		void OnUpdate(Engine::Timestep ts)
+		{
+			auto& transform = GetComponent<Engine::TransformComponent>().Transform;
+			float speed = 5.0f;
+			if (Engine::Input::IsKeyPressed(Engine::Key::A))
+				transform[3][0] -= speed * ts;
+			if (Engine::Input::IsKeyPressed(Engine::Key::D))
+				transform[3][0] += speed * ts;
+			if (Engine::Input::IsKeyPressed(Engine::Key::W))
+				transform[3][1] += speed * ts;
+			if (Engine::Input::IsKeyPressed(Engine::Key::S))
+				transform[3][1] -= speed * ts;
+
+		}
+	};
+
+	m_CameraEntity.AddComponent<Engine::NativeScriptComponent>().Bind<CameraController>();
 
 }
 
@@ -45,7 +82,7 @@ void Sandbox2D::OnUpdate(Engine::Timestep ts)
 	rotation += ts * 1.0f;
 
 
-	Engine::Renderer2D::BeginScene(m_CameraController.GetCamera());
+	//Engine::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
 	m_ActiveScene->OnUpdate(ts);
 	//Engine::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
@@ -55,12 +92,12 @@ void Sandbox2D::OnUpdate(Engine::Timestep ts)
 	//Engine::Renderer2D::DrawQuad({  0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_CheckerBoard, 10);
 	//Engine::Renderer2D::DrawRotatedQuad({ -0.5f, -0.5f, 0.0f }, { 1.0f, 1.0f },rotation, m_CheckerBoard, 20);
 
-	Engine::Renderer2D::EndScene();
+	//Engine::Renderer2D::EndScene();
 
-	Engine::Renderer2D::BeginScene(m_CameraController.GetCamera());
+	//Engine::Renderer2D::BeginScene(m_CameraController.GetCamera());
 	//Engine::Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, m_Stairs);
-	Engine::Renderer2D::DrawQuad({ 1.0f, 0.0f, 0.0f }, { 1.0f, 2.0f }, m_TextureTree);
-	Engine::Renderer2D::EndScene();
+	//Engine::Renderer2D::DrawQuad({ 1.0f, 0.0f, 0.0f }, { 1.0f, 2.0f }, m_TextureTree);
+	//Engine::Renderer2D::EndScene();
 
 }
 
