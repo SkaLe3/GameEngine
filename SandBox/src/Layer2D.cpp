@@ -43,16 +43,16 @@ void Sandbox2D::OnAttach()
 
 		void OnUpdate(Engine::Timestep ts)
 		{
-			auto& transform = GetComponent<Engine::TransformComponent>().Transform;
+			auto& translation = GetComponent<Engine::TransformComponent>().Translation;
 			float speed = 5.0f;
 			if (Engine::Input::IsKeyPressed(Engine::Key::A))
-				transform[3][0] -= speed * ts;
+				translation.x -= speed * ts;
 			if (Engine::Input::IsKeyPressed(Engine::Key::D))
-				transform[3][0] += speed * ts;
+				translation.x += speed * ts;
 			if (Engine::Input::IsKeyPressed(Engine::Key::W))
-				transform[3][1] += speed * ts;
+				translation.y += speed * ts;
 			if (Engine::Input::IsKeyPressed(Engine::Key::S))
-				transform[3][1] -= speed * ts;
+				translation.y -= speed * ts;
 
 		}
 	};
