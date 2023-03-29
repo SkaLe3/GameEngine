@@ -19,12 +19,14 @@ void Sandbox2D::OnAttach()
 	m_TextureTree = Engine::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 2, 1 }, { 128, 128 }, {1, 2});
 
 	m_ActiveScene = Engine::CreateRef<Engine::Scene>();
+	m_ActiveScene->OnViewportResize(1920, 1080);
 
 	auto square = m_ActiveScene->CreateEntity("Square");
 	square.AddComponent<Engine::SpriteRendererComponent>(glm::vec4{0.0f, 1.0f, 0.0f, 1.0f});
 
 	m_CameraEntity = m_ActiveScene->CreateEntity("Camera");
 	m_CameraEntity.AddComponent<Engine::CameraComponent>();
+
 
 
 	class CameraController : public Engine::ScriptableEntity

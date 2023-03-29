@@ -19,6 +19,9 @@
     <Filter Include="src\Engine\Renderer">
       <UniqueIdentifier>{F838018B-649A-DE98-ED07-254B59681558}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Engine\Scene">
+      <UniqueIdentifier>{AF1338A9-9B0C-57FB-C43E-3C80B0963607}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Libs">
       <UniqueIdentifier>{86A721CF-7274-7CDA-9B8D-6A8287B9B168}</UniqueIdentifier>
     </Filter>
@@ -108,6 +111,9 @@
     <ClInclude Include="src\Engine\Renderer\Buffer.h">
       <Filter>src\Engine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Renderer\Camera.h">
+      <Filter>src\Engine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Engine\Renderer\GraphicsContext.h">
       <Filter>src\Engine\Renderer</Filter>
     </ClInclude>
@@ -140,6 +146,21 @@
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\VertexArray.h">
       <Filter>src\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Scene\Components.h">
+      <Filter>src\Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Scene\Entity.h">
+      <Filter>src\Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Scene\Scene.h">
+      <Filter>src\Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Scene\SceneCamera.h">
+      <Filter>src\Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Scene\ScriptableEntity.h">
+      <Filter>src\Engine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\Libs\OpenGL\OpenGLBuffer.h">
       <Filter>src\Libs\OpenGL</Filter>
@@ -1413,12 +1434,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Scene\Scene.h" />
-    <ClInclude Include="src\Engine\Scene\Components.h" />
-    <ClInclude Include="src\Engine\Scene\Entity.h" />
-    <ClInclude Include="src\Engine\Renderer\Camera.h" />
-    <ClInclude Include="src\Engine\Scene\SceneCamera.h" />
-    <ClInclude Include="src\Engine\Scene\ScriptableEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Core\Application.cpp">
@@ -1478,6 +1493,15 @@
     <ClCompile Include="src\Engine\Renderer\VertexArray.cpp">
       <Filter>src\Engine\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Scene\Entity.cpp">
+      <Filter>src\Engine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Scene\Scene.cpp">
+      <Filter>src\Engine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Scene\SceneCamera.cpp">
+      <Filter>src\Engine\Scene</Filter>
+    </ClCompile>
     <ClCompile Include="src\Libs\OpenGL\OpenGLBuffer.cpp">
       <Filter>src\Libs\OpenGL</Filter>
     </ClCompile>
@@ -1502,8 +1526,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Scene\Scene.cpp" />
-    <ClCompile Include="src\Engine\Scene\Entity.cpp" />
-    <ClCompile Include="src\Engine\Scene\SceneCamera.cpp" />
   </ItemGroup>
 </Project>
