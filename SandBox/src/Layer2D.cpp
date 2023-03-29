@@ -3,6 +3,7 @@
 #include "Libs/OpenGL/OpenGLShader.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <Engine.h>
+#include <Engine/Scene/SceneSerializer.h>
 
 Sandbox2D::Sandbox2D()
 	: Layer(), m_CameraController(1920.0f / 1080.0f, true)
@@ -61,6 +62,7 @@ void Sandbox2D::OnAttach()
 
 	m_CameraEntity.AddComponent<Engine::NativeScriptComponent>().Bind<CameraController>();
 
+
 }
 
 void Sandbox2D::OnDetach()
@@ -106,4 +108,29 @@ void Sandbox2D::OnUpdate(Engine::Timestep ts)
 void Sandbox2D::OnEvent(Engine::Event& e)
 {
 	m_CameraController.OnEvent(e);
+
+	Engine::EventDispatcher dispatcher(e);
+	dispatcher.Dispatch<Engine::KeyPressedEvent>(BIND_EVENT_FN(Sandbox2D::OnKeyPressed));
+}
+
+bool Sandbox2D::OnKeyPressed(Engine::KeyPressedEvent& e)
+{
+	//Shortcut example
+	bool controlPressed = Engine:: Input::IsKeyPressed(Engine::Key::LeftControl) || Engine::Input::IsKeyPressed(Engine::Key::RightControl);
+	switch (e.GetKeyCode())
+	{
+	case Engine::Key::S:
+	{
+		if (controlPressed)
+			int pass = 2; // SaveAs()
+			break;
+	}
+	case Engine::Key::N:
+	{
+		if (controlPressed)
+			int pass = 3; // New()
+		break;
+	}
+	}
+	return true;
 }

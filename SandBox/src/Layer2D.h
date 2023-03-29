@@ -11,6 +11,11 @@ public:
 
 	void OnUpdate(Engine::Timestep ts) override;
 	void OnEvent(Engine::Event& e) override;
+
+	bool OnKeyPressed(Engine::KeyPressedEvent& e); // Example of realizations
+
+	// void New();
+	// void SaveAs();           Example of realizations
 private:
 	Engine::OrthographicCameraController m_CameraController;
 	Engine::Entity m_CameraEntity;
