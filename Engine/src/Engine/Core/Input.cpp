@@ -27,15 +27,34 @@ namespace Engine {
 		auto* window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
 		double xpos, ypos;
 		glfwGetCursorPos(window, &xpos, &ypos);
-
 		return { (float)xpos, (float)ypos };
 	}
 	double Input::GetMouseX()
 	{
+		
 		return GetMousePosition().x;
 	}
 	double Input::GetMouseY()
 	{
 		return GetMousePosition().y;
 	}
+
+	void Input::DisableCursor()
+	{
+		auto* window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	}
+
+	void Input::EnableCursor()
+	{
+		auto* window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+	}
+
+	void Input::HideCursor()
+	{
+		auto* window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+	}
 }
+

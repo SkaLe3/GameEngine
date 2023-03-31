@@ -17,5 +17,9 @@ namespace Engine {
 		static double GetMouseX();
 		static double GetMouseY();
 
+		static void DisableCursor();
+		static void EnableCursor();
+		static void HideCursor();
+
 	};
 }

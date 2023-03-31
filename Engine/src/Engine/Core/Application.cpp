@@ -21,7 +21,6 @@ namespace Engine {
 	
 	Application::Application(const std::string& name)
 	{
-		EG_PROFILE_FUNCTION();
 
 		Log::GetLogger()->Init();
 		s_Instance = this;
@@ -60,7 +59,6 @@ namespace Engine {
 		 
 		while (m_Running) 
 		{
-			EG_PROFILE_SCOPE("Runloop");
 			float time = (float)glfwGetTime(); 
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
@@ -77,7 +75,6 @@ namespace Engine {
 
 	void Application::PushLayer(Layer* layer)
 	{
-		EG_PROFILE_FUNCTION();
 
 		m_LayerStack.PushLayer(layer);
 		layer->OnAttach();

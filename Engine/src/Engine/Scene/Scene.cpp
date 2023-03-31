@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "Components.h"
 #include "Engine/Renderer/Renderer2D.h"
+
 #include <glm/glm.hpp>
 
 #include "Entity.h"
@@ -50,10 +51,7 @@ namespace Engine {
 				}
 				nsc.Instance->OnUpdate(ts);
 			}); 
-
 		}
-
-
 
 		Camera* mainCamera = nullptr;
 		glm::mat4 cameraTransform;
@@ -87,10 +85,23 @@ namespace Engine {
 			Renderer2D::EndScene();
 		}
 
-
-		
-		
 	}
+
+	void Scene::OnUpdateEditor(Timestep ts, EditorCamera& camera)
+	{
+		Renderer2D::BeginScene(camera);
+
+		auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>);
+		for (auto entity : group)
+		{
+			auto [transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
+
+			Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
+		}
+
+		Renderer2D::EndScene();
+	}
+
 
 	void Scene::OnViewportResize(uint32_t width, uint32_t height)
 	{
@@ -109,6 +120,18 @@ namespace Engine {
 	}
 
 
+
+	Entity Scene::GetPrimaryCameraEntity()
+	{
+		auto view = m_Registry.view<CameraComponent>();
+		for (auto entity : view)
+		{
+			const auto& cc = view.get<CameraComponent>(entity);
+			if (cc.Primary)
+				return Entity(entity, this);
+		}
+		return {};
+	}
 
 	// OComponentAdded Realizations
 

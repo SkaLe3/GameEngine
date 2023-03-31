@@ -1435,6 +1435,9 @@
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Scene\SceneSerializer.h" />
+    <ClInclude Include="src\Engine\Renderer\EditorCamera.h" />
+    <ClInclude Include="src\Engine\Renderer\Framebuffer.h" />
+    <ClInclude Include="src\Libs\OpenGL\OpenGLFramebuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Core\Application.cpp">
@@ -1528,5 +1531,8 @@
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Scene\SceneSerializer.cpp" />
+    <ClCompile Include="src\Engine\Renderer\EditorCamera.cpp" />
+    <ClCompile Include="src\Engine\Renderer\Framebuffer.cpp" />
+    <ClCompile Include="src\Libs\OpenGL\OpenGLFramebuffer.cpp" />
   </ItemGroup>
 </Project>

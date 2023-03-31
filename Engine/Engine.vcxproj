@@ -119,6 +119,8 @@
     <ClInclude Include="src\Engine\Events\MouseEvent.h" />
     <ClInclude Include="src\Engine\Renderer\Buffer.h" />
     <ClInclude Include="src\Engine\Renderer\Camera.h" />
+    <ClInclude Include="src\Engine\Renderer\EditorCamera.h" />
+    <ClInclude Include="src\Engine\Renderer\Framebuffer.h" />
     <ClInclude Include="src\Engine\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Engine\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Engine\Renderer\OrthographicCameraController.h" />
@@ -142,6 +144,7 @@
     <ClInclude Include="src\Libs\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Libs\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Libs\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Libs\OpenGL\OpenGLFramebuffer.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
@@ -570,6 +573,8 @@
     <ClCompile Include="src\Engine\Core\Window.cpp" />
     <ClCompile Include="src\Engine\Core\WindowsWindow.cpp" />
     <ClCompile Include="src\Engine\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Engine\Renderer\EditorCamera.cpp" />
+    <ClCompile Include="src\Engine\Renderer\Framebuffer.cpp" />
     <ClCompile Include="src\Engine\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\Engine\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Engine\Renderer\OrthographicCameraController.cpp" />
@@ -587,6 +592,7 @@
     <ClCompile Include="src\Engine\Scene\SceneSerializer.cpp" />
     <ClCompile Include="src\Libs\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Libs\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Libs\OpenGL\OpenGLFramebuffer.cpp" />
     <ClCompile Include="src\Libs\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Libs\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Libs\OpenGL\OpenGLTexture.cpp" />

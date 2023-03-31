@@ -1,5 +1,6 @@
 #pragma once
 #include "Engine/Renderer/OrthographicCamera.h"
+#include "Engine/Renderer/EditorCamera.h"
 
 #include "Texture.h"
 #include "SubTexture2D.h"
@@ -14,6 +15,7 @@ namespace Engine {
 		static void ShutDown();
 
 		static void BeginScene(const Camera& camera, const glm::mat4& transform);
+		static void BeginScene(const EditorCamera& camera);
 		static void BeginScene(const OrthographicCamera& camera);
 		static void EndScene();
 
