@@ -114,6 +114,12 @@
     <ClInclude Include="src\Engine\Renderer\Camera.h">
       <Filter>src\Engine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Renderer\EditorCamera.h">
+      <Filter>src\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Renderer\Framebuffer.h">
+      <Filter>src\Engine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Engine\Renderer\GraphicsContext.h">
       <Filter>src\Engine\Renderer</Filter>
     </ClInclude>
@@ -159,6 +165,9 @@
     <ClInclude Include="src\Engine\Scene\SceneCamera.h">
       <Filter>src\Engine\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Scene\SceneSerializer.h">
+      <Filter>src\Engine\Scene</Filter>
+    </ClInclude>
     <ClInclude Include="src\Engine\Scene\ScriptableEntity.h">
       <Filter>src\Engine\Scene</Filter>
     </ClInclude>
@@ -166,6 +175,9 @@
       <Filter>src\Libs\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Libs\OpenGL\OpenGLContext.h">
+      <Filter>src\Libs\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Libs\OpenGL\OpenGLFramebuffer.h">
       <Filter>src\Libs\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Libs\OpenGL\OpenGLRendererAPI.h">
@@ -1434,10 +1446,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Scene\SceneSerializer.h" />
-    <ClInclude Include="src\Engine\Renderer\EditorCamera.h" />
-    <ClInclude Include="src\Engine\Renderer\Framebuffer.h" />
-    <ClInclude Include="src\Libs\OpenGL\OpenGLFramebuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Core\Application.cpp">
@@ -1462,6 +1470,12 @@
       <Filter>src\Engine\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Renderer\Buffer.cpp">
+      <Filter>src\Engine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Renderer\EditorCamera.cpp">
+      <Filter>src\Engine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Renderer\Framebuffer.cpp">
       <Filter>src\Engine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Renderer\GraphicsContext.cpp">
@@ -1506,10 +1520,16 @@
     <ClCompile Include="src\Engine\Scene\SceneCamera.cpp">
       <Filter>src\Engine\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Scene\SceneSerializer.cpp">
+      <Filter>src\Engine\Scene</Filter>
+    </ClCompile>
     <ClCompile Include="src\Libs\OpenGL\OpenGLBuffer.cpp">
       <Filter>src\Libs\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Libs\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Libs\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Libs\OpenGL\OpenGLFramebuffer.cpp">
       <Filter>src\Libs\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Libs\OpenGL\OpenGLRendererAPI.cpp">
@@ -1530,9 +1550,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Scene\SceneSerializer.cpp" />
-    <ClCompile Include="src\Engine\Renderer\EditorCamera.cpp" />
-    <ClCompile Include="src\Engine\Renderer\Framebuffer.cpp" />
-    <ClCompile Include="src\Libs\OpenGL\OpenGLFramebuffer.cpp" />
   </ItemGroup>
 </Project>
