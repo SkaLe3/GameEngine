@@ -6,6 +6,8 @@
 #include "LayerStack.h"
 #include "Timestep.h"
 
+#include "Engine/ImGui/ImGuiLayer.h"
+
 namespace Engine {
 
 	class Application
@@ -19,18 +21,21 @@ namespace Engine {
 		void OnEvent(Event& e);
 
 		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* layer);
 		void PopLayer(Layer* layer);
 
 		Window& GetWindow() { return *m_Window; }
 
 		void Close();
+		ImGuiLayer* GetImGuiLayer() { return m_ImGuiLayer; }
 		static Application& Get() { return *s_Instance; }
 
 	private:
 		bool OnWindowClosed(WindowCloseEvent& e);
 		bool OnWindowResized(WindowResizeEvent& e);
 	private:
-		std::unique_ptr<Window> m_Window;
+		Scope<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		bool m_Minimized = false;
 		LayerStack m_LayerStack;

@@ -16,6 +16,9 @@
     <Filter Include="src\Engine\Events">
       <UniqueIdentifier>{B624EAB0-223B-E846-6BB2-7368D707B9CE}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Engine\ImGui">
+      <UniqueIdentifier>{BC1B88A8-A814-A7FA-D146-8C7FBD9E8606}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Engine\Renderer">
       <UniqueIdentifier>{F838018B-649A-DE98-ED07-254B59681558}</UniqueIdentifier>
     </Filter>
@@ -107,6 +110,9 @@
     </ClInclude>
     <ClInclude Include="src\Engine\Events\MouseEvent.h">
       <Filter>src\Engine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\ImGui\ImGuiLayer.h">
+      <Filter>src\Engine\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\Buffer.h">
       <Filter>src\Engine\Renderer</Filter>
@@ -1468,6 +1474,12 @@
     </ClCompile>
     <ClCompile Include="src\Engine\Core\WindowsWindow.cpp">
       <Filter>src\Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\ImGui\ImGuiBuild.cpp">
+      <Filter>src\Engine\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\ImGui\ImGuiLayer.cpp">
+      <Filter>src\Engine\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Renderer\Buffer.cpp">
       <Filter>src\Engine\Renderer</Filter>

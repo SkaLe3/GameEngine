@@ -38,6 +38,8 @@ namespace Engine {
 		uint32_t TextureSlotIndex = 1; // 0 - white texture
 
 		glm::vec4 QuadVertexPositions[4];
+
+		Renderer2D::Statistics Stats;
 	};
 	static Renderer2DData s_Data;
 
@@ -469,6 +471,17 @@ namespace Engine {
 		
 
 		s_Data.QuadIndexCount += 6;
+	}
+
+
+	void Renderer2D::ResetStats()
+	{
+		memset(&s_Data.Stats, 0, sizeof(Statistics));
+	}
+
+	Renderer2D::Statistics Renderer2D::GetStats()
+	{
+		return s_Data.Stats;
 	}
 
 }

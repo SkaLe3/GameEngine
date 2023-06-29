@@ -30,25 +30,28 @@ namespace Engine {
 		
 		Renderer::Init();
 
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);
 
-		
 	}
 
 
 	Application::~Application() 
 	{
 	}
+
+
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClosed));
 		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(Application::OnWindowResized));
 
-		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
+		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
 		{
-			(*--it)->OnEvent(e);
 			if (e.m_Handled)
 				break;
+			(*it)->OnEvent(e);
 			
 		}
 
@@ -65,11 +68,19 @@ namespace Engine {
 			
 			if (!m_Minimized)
 			{
-
 				for (Layer* layer : m_LayerStack)
 					layer->OnUpdate(timestep);
-				m_Window->OnUpdate();
+
+				
+				m_ImGuiLayer->Begin();
+				for (Layer* layer : m_LayerStack)
+					layer->OnImGuiRender();
+				m_ImGuiLayer->End();
+				
 			}
+				m_Window->OnUpdate();
+
+			
 		}
 	}
 
@@ -77,6 +88,13 @@ namespace Engine {
 	{
 
 		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
+
+	}
+	void Application::PushOverlay(Layer* layer)
+	{
+
+		m_LayerStack.PushOverlay(layer);
 		layer->OnAttach();
 
 	}
@@ -90,6 +108,7 @@ namespace Engine {
 	{
 		m_Running = false;
 	}
+
 
 	bool Application::OnWindowClosed(WindowCloseEvent& e)
 	{

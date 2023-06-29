@@ -18,8 +18,15 @@ namespace Engine {
 
 	void OpengGLFramebuffer::Invalidate()
 	{
+		if (m_RendererID)
+		{
+			glDeleteFramebuffers(1, &m_RendererID);
+			glDeleteTextures(1, &m_ColorAttachment);
+			glDeleteTextures(1, &m_DepthAttachment);
+		}
 		glCreateFramebuffers(1, &m_RendererID);
-		glBindFramebuffer(GL_TEXTURE_2D, m_RendererID);
+		//glBindFramebuffer(GL_TEXTURE_2D, m_RendererID);
+		glBindFramebuffer(GL_FRAMEBUFFER, m_RendererID);
 
 		glCreateTextures(GL_TEXTURE_2D, 1, &m_ColorAttachment);
 		glBindTexture(GL_TEXTURE_2D, m_ColorAttachment);
@@ -43,13 +50,23 @@ namespace Engine {
 
 	void OpengGLFramebuffer::Bind()
 	{
-		glBindFramebuffer(GL_TEXTURE_2D, m_RendererID);
+		//glBindFramebuffer(GL_TEXTURE_2D, m_RendererID);
+		glBindFramebuffer(GL_FRAMEBUFFER, m_RendererID);
+		glViewport(0, 0, m_Specification.Width, m_Specification.Height);
 	}
 
 	void OpengGLFramebuffer::Unbind()
 	{
-		glBindFramebuffer(GL_TEXTURE_2D, 0);
+		//glBindFramebuffer(GL_TEXTURE_2D, 0);
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
 
+	void OpengGLFramebuffer::Resize(uint32_t width, uint32_t height)
+	{
+		m_Specification.Width = width;
+		m_Specification.Height = height;
+
+		Invalidate();
+	}
 
 }

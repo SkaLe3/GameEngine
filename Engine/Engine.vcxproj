@@ -117,6 +117,7 @@
     <ClInclude Include="src\Engine\Events\Event.h" />
     <ClInclude Include="src\Engine\Events\KeyEvent.h" />
     <ClInclude Include="src\Engine\Events\MouseEvent.h" />
+    <ClInclude Include="src\Engine\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Engine\Renderer\Buffer.h" />
     <ClInclude Include="src\Engine\Renderer\Camera.h" />
     <ClInclude Include="src\Engine\Renderer\EditorCamera.h" />
@@ -572,6 +573,8 @@
     <ClCompile Include="src\Engine\Core\Log.cpp" />
     <ClCompile Include="src\Engine\Core\Window.cpp" />
     <ClCompile Include="src\Engine\Core\WindowsWindow.cpp" />
+    <ClCompile Include="src\Engine\ImGui\ImGuiBuild.cpp" />
+    <ClCompile Include="src\Engine\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Engine\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Engine\Renderer\EditorCamera.cpp" />
     <ClCompile Include="src\Engine\Renderer\Framebuffer.cpp" />

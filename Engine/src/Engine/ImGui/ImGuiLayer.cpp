@@ -5,7 +5,7 @@
 #include <imgui_internal.h>
 
 #include <examples/imgui_impl_glfw.h>
-#include <examples/imgui_impl_opengl.h>
+#include <examples/imgui_impl_opengl3.h>
 
 #include "Engine/Core/Application.h"
 
@@ -17,7 +17,7 @@
 
 namespace Engine 
 {
-	ImGuiLayer::ImGuiLayer() : Layer("ImGuiLayer")
+	ImGuiLayer::ImGuiLayer() : Layer()
 	{
 	}
 
@@ -30,11 +30,11 @@ namespace Engine
 		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
-		float fontSize = 18.0f;
-		io.Fonts->AddFontFromFileTTF("assets/fonts/opensans/OpenSans-Bold.ttf", fontSize);
-		io.FontDefault = io.Fonts->AddFontFromFileTTF("assets/fonts/opensans/OpenSans-Regular.ttf", fontSize);
+		//float fontSize = 18.0f;
+		//io.Fonts->AddFontFromFileTTF("assets/fonts/opensans/OpenSans-Bold.ttf", fontSize);
+		//io.FontDefault = io.Fonts->AddFontFromFileTTF("assets/fonts/opensans/OpenSans-Regular.ttf", fontSize);
 
-		ImGui::StyleColorsDark;
+		ImGui::StyleColorsDark();
 
 		ImGuiStyle& style = ImGui::GetStyle();
 		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
@@ -43,7 +43,7 @@ namespace Engine
 			style.Colors[ImGuiCol_WindowBg].w = 1.0f;
 		}
 		
-		SetDarkThemeColors();
+		//SetDarkThemeColors();
 
 		Application& app = Application::Get();
 		GLFWwindow* window = static_cast<GLFWwindow*>(app.GetWindow().GetNativeWindow());
@@ -86,7 +86,7 @@ namespace Engine
 
 		//Rendering
 		ImGui::Render();
-		ImGui_ImplOpenGL3_Render_RenderDrawData(ImGui::GetDrawData());
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
 		{
@@ -107,10 +107,10 @@ namespace Engine
 		// Headers
 		colors[ImGuiCol_Header] = ImVec4{ 0.2f, 0.205f, 0.21f, 1.0f };
 		colors[ImGuiCol_HeaderHovered] = ImVec4{ 0.3f, 0.305f, 0.31f, 1.0f };
-		colors[ImGuiCol_HeaderActive] ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
+		colors[ImGuiCol_HeaderActive] = ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
 
 		//Buttons
-		colors[ImGuiCol_Button] = ImVec4{ 0.2f, 0.205f, 0.21, 1.0f };
+		colors[ImGuiCol_Button] = ImVec4{ 0.2f, 0.205f, 0.21f, 1.0f };
 		colors[ImGuiCol_ButtonHovered] = ImVec4{ 0.3f, 0.305f, 0.31f, 1.0f };
 		colors[ImGuiCol_ButtonActive] = ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
 
