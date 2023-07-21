@@ -12,7 +12,7 @@ public:
 
 	void OnUpdate(Engine::Timestep ts) override;
 	void OnEvent(Engine::Event& e) override;
-
+	//virtual void OnImGuiRender() override;
 	bool OnKeyPressed(Engine::KeyPressedEvent& e); // Example of realizations
 
 	// void New();
@@ -34,6 +34,5 @@ private:
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f }; 
 
-	Engine::EditorCamera m_EditorCamera;
 
 };

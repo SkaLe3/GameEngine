@@ -1,9 +1,12 @@
 #include "Layer2D.h"
-
+#include <imgui/imgui.h>
 #include "Libs/OpenGL/OpenGLShader.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <Engine.h>
 #include <Engine/Scene/SceneSerializer.h>
+
+
+#include <glm/gtc/type_ptr.hpp>
 
 Sandbox2D::Sandbox2D()
 	: Layer(), m_CameraController(1920.0f / 1080.0f, true)
@@ -31,7 +34,7 @@ void Sandbox2D::OnAttach()
 
 	auto square = m_ActiveScene->CreateEntity("Square");
 	square.AddComponent<Engine::SpriteRendererComponent>(glm::vec4{0.2f, 0.8f, 0.2f, 1.0f});
-#if 1
+#if 0
 	// right wall
 	auto square2 = m_ActiveScene->CreateEntity("square2");
 	square2.AddComponent<Engine::SpriteRendererComponent>(glm::vec4{ 0.8f, 0.2f, 0.2f, 1.0f });
@@ -82,14 +85,14 @@ void Sandbox2D::OnAttach()
 
 	m_CameraEntity = m_ActiveScene->CreateEntity("Camera");
 	Engine::CameraComponent& cc = m_CameraEntity.AddComponent<Engine::CameraComponent>();
-	cc.Camera.SetPerspective(45.0f, 0.01f, 1000.0f); //comment this
-	//cc.Camera.SetOrthographic(10.0f, -5.0f, 5.0f);   //comment this
-	auto& tcc = m_CameraEntity.GetComponent<Engine::TransformComponent>();
-	tcc.Translation = { tcc.Translation.x, tcc.Translation.y, 3.0f }; //comment this
-	m_CameraEntity.AddComponent<Engine::SpriteRendererComponent>(glm::vec4{ 0.9f, 0.75f, 0.8f, 1.0f });
+	//cc.Camera.SetPerspective(45.0f, 0.01f, 1000.0f); //comment this
+	cc.Camera.SetOrthographic(10.0f, -5.0f, 5.0f);   //comment this
+	//auto& tcc = m_CameraEntity.GetComponent<Engine::TransformComponent>();
+	//tcc.Translation = { tcc.Translation.x, tcc.Translation.y, 3.0f }; //comment this
+	//m_CameraEntity.AddComponent<Engine::SpriteRendererComponent>(glm::vec4{ 0.9f, 0.75f, 0.8f, 1.0f });
 
 
-#if 0
+#if 1
 	class CameraController : public Engine::ScriptableEntity
 	{
 	public:
@@ -174,39 +177,39 @@ void Sandbox2D::OnDetach()
 
 void Sandbox2D::OnUpdate(Engine::Timestep ts)
 {
-	//m_CameraController.OnUpdate(ts);
-	m_Framebuffer->Bind();
+	m_CameraController.OnUpdate(ts);
+	//m_Framebuffer->Bind();
 
 
-	//m_EditorCamera.OnUpdate(ts);
 
 
-	Engine::RenderCommand::SetClearColor({ 0.15f, 0.15f, 0.15f, 1 });
+	Engine::RenderCommand::SetClearColor({ 0.5f, 0.15f, 0.15f, 1.0f });
 	Engine::RenderCommand::Clear();
 	//m_ActiveScene->OnUpdateEditor(ts, m_EditorCamera);
 
 	static float rotation = 0.0f;
 	rotation += ts * 1.0f;
 
-
-	//Engine::Renderer2D::BeginScene(m_CameraController.GetCamera());
-
+	//
+	// Engine::Renderer2D::BeginScene(m_CameraController.GetCamera());
+	//
 	m_ActiveScene->OnUpdate(ts);
+	//
 	//Engine::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
 	//Engine::Renderer2D::DrawRotatedQuad({ -0.6f, 0.8f }, { 0.7f, 0.7f }, 60, { 0.8f, 0.5f, 0.3f, 1.0f });
 	//Engine::Renderer2D::DrawQuad({ -0.6f, 0.8f }, { 0.7f, 0.7f }, { 0.8f, 0.5f, 0.3f, 1.0f });
 	//Engine::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
 	//Engine::Renderer2D::DrawQuad({  0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_CheckerBoard, 10);
 	//Engine::Renderer2D::DrawRotatedQuad({ -0.5f, -0.5f, -0.1f }, { 1.0f, 1.0f },rotation, m_CheckerBoard, 20);
-
+	//
 	//Engine::Renderer2D::EndScene();
-	
+	//
 	//Engine::Renderer2D::BeginScene(m_CameraController.GetCamera());
 	//Engine::Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, m_Stairs);
 	//Engine::Renderer2D::DrawQuad({ 1.0f, 0.0f, 0.0f }, { 1.0f, 2.0f }, m_TextureTree);
 	//Engine::Renderer2D::EndScene();
-
-	m_Framebuffer->Unbind();
+	//
+	//m_Framebuffer->Unbind();
 
 }
 

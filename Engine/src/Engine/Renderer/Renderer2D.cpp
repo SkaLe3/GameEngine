@@ -173,6 +173,7 @@ namespace Engine {
 			s_Data.TextureSlots[i]->Bind(i);
 		
 		RenderCommand::DrawIndexed(s_Data.QuadVertexArray, s_Data.QuadIndexCount);
+		s_Data.Stats.DrawCalls++;
 	}
 
 	void Renderer2D::FlushAndReset()
@@ -249,6 +250,8 @@ namespace Engine {
 		}
 
 		s_Data.QuadIndexCount += 6;
+
+		s_Data.Stats.QuadCount++;
 	}
 
 	void Renderer2D::DrawQuad(const glm::mat4& transform, const Ref<Texture2D>& texture, float tilingFactor, const glm::vec4& tintColor)
@@ -289,6 +292,7 @@ namespace Engine {
 		}
 
 		s_Data.QuadIndexCount += 6;
+		s_Data.Stats.QuadCount++;
 	}
 
 	void Renderer2D::DrawQuad(const glm::mat4& transform, const Ref<SubTexture2D>& subtexture, float tilingFactor, const glm::vec4& tintColor)
