@@ -14,8 +14,13 @@ namespace Engine {
 		void SetContext(const Ref<Scene>& scene);
 
 		void OnImGuiRender();
+
+	private:
+		void DrawEntityNode(Entity entity);
 	private:
 		Ref<Scene> m_Context;
+
+		Entity m_SelectionContext;
 
 	};
 }
