@@ -21,7 +21,6 @@ namespace Engine {
 		fbSpec.Height = 720;
 		m_Framebuffer = Framebuffer::Create(fbSpec);
 		m_ActiveScene = CreateRef<Scene>();
-		m_ActiveScene->OnViewportResize(1920, 1080);
 
 
 		auto square = m_ActiveScene->CreateEntity("GreenSquare");
@@ -37,6 +36,8 @@ namespace Engine {
 		auto& cc = m_SecondCamera.AddComponent<CameraComponent>();
 		m_SecondCamera.GetComponent<CameraComponent>().Camera.SetOrthographic(1.0f, -1.0f, 1.0f);
 		cc.Primary = false;
+
+		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
 	}
 
 	void EditorLayer::OnDetach()
@@ -52,6 +53,8 @@ namespace Engine {
 		{
 			m_Framebuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_CameraController.OnResize(m_ViewportSize.x, m_ViewportSize.y);
+
+			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		}
 		// Update
 		if (m_ViewportFocused)
@@ -128,6 +131,7 @@ namespace Engine {
 
 			ImGui::EndMenuBar();
 		}
+		m_SceneHierarchyPanel.OnImGuiRender();
 
 		ImGui::Begin("Settings");
 
@@ -156,6 +160,13 @@ namespace Engine {
 			m_CameraEntity.GetComponent<CameraComponent>().Primary = m_PrimaryCamera;
 			m_SecondCamera.GetComponent<CameraComponent>().Primary = !m_PrimaryCamera;
 		}
+		{
+			auto& camera = m_SecondCamera.GetComponent<CameraComponent>().Camera;
+			float orthoSize = camera.GetOrthographicSize();
+			if (ImGui::DragFloat("Second Camera Ortho Size", &orthoSize))
+				camera.SetOrthographicSize(orthoSize);
+		}
+
 		ImGui::End();
 
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
