@@ -35,10 +35,12 @@ namespace Engine {
 		m_CameraEntity = m_ActiveScene->CreateEntity("Camera Entity");
 		m_CameraEntity.AddComponent<CameraComponent>();
 		m_CameraEntity.GetComponent<CameraComponent>().Camera.SetOrthographic(10.0f, -5.0f, 5.0f);
+		//m_CameraEntity.GetComponent<CameraComponent>().Camera.SetPerspective(45.0f, 0.01f, 1000.0f);
 		
 		m_SecondCamera = m_ActiveScene->CreateEntity("Clip-Space Entity");
 		auto& cc = m_SecondCamera.AddComponent<CameraComponent>();
 		m_SecondCamera.GetComponent<CameraComponent>().Camera.SetOrthographic(1.0f, -1.0f, 1.0f);
+		//m_SecondCamera.GetComponent<CameraComponent>().Camera.SetPerspective(45.0f, 0.01f, 1000.0f);
 		cc.Primary = false;
 
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);

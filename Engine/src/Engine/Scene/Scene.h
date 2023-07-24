@@ -27,7 +27,7 @@ namespace Engine {
 
 	private:
 		entt::registry m_Registry;
-		uint32_t m_ViewportWidth = 0, m_ViewportHeiht = 0;
+		uint32_t m_ViewportWidth = 1, m_ViewportHeiht = 1;
 
 		friend class Entity;
 		friend class SceneSerializer;

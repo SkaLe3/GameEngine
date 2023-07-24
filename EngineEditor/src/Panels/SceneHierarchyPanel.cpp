@@ -52,7 +52,13 @@ namespace Engine {
 		}
 
 		if (opened)
+		{
+			ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow;
+			bool opened = ImGui::TreeNodeEx((void*)9817239, flags, tag.c_str());
+			if (opened)
+				ImGui::TreePop();
 			ImGui::TreePop();
+		}
 	}
 
 	void SceneHierarchyPanel::DrawComponents(Entity entity)
@@ -63,7 +69,7 @@ namespace Engine {
 
 			char buffer[256];
 			memset(buffer, 0, sizeof(buffer));
-			strcpy_s(buffer,sizeof(buffer), tag.c_str());
+			strcpy_s(buffer, sizeof(buffer), tag.c_str());
 			if (ImGui::InputText("Tag", buffer, sizeof(buffer)))
 			{
 				tag = std::string(buffer);
@@ -88,15 +94,15 @@ namespace Engine {
 				ImGui::Checkbox("Primary", &cameraComponent.Primary);
 
 				const char* projectionTypeStrings[] = { "Perspective", "Orthographic" };
-				const char* currentProjectionTypeString = projectionTypeStrings[(int)camera.GetProjectionType()];
-				if (ImGui::BeginCombo("Projection", currentProjectionTypeString))
+				size_t currentProjectionTypeIndex = (int)camera.GetProjectionType();
+				if (ImGui::BeginCombo("Projection", projectionTypeStrings[currentProjectionTypeIndex]))
 				{
 					for (int i = 0; i < 2; i++)
 					{
-						bool isSelected = currentProjectionTypeString == projectionTypeStrings[i];
+						bool isSelected = (currentProjectionTypeIndex == i);
 						if (ImGui::Selectable(projectionTypeStrings[i], isSelected));
 						{
-							currentProjectionTypeString = projectionTypeStrings[i];
+							currentProjectionTypeIndex = i;
 							camera.SetProjectionType((SceneCamera::ProjectionType)i);
 						}
 						if (isSelected)
