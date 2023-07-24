@@ -138,16 +138,16 @@ namespace Engine {
 				// Disabling fullscreen would allow the window to be moved to the front of other windows, 
 				// which we can't undo at the moment without finer window depth/z control.
 				//ImGui::MenuItem("Fullscreen", NULL, &opt_fullscreen_persistant);
-				if (ImGui::MenuItem("Serialize"))
+				if (ImGui::MenuItem("New", "Ctrl + N"))
 				{
-					SceneSerializer serializer(m_ActiveScene);
-					serializer.Serialize("assets/scenes/Example.skale");
+
+				if (ImGui::MenuItem("Open...", "Ctrl+O"))
+				{
+					
 				}
-				if (ImGui::MenuItem("Deserialize"))
+				if (ImGui::MenuItem("Save As...", "Ctrl+Shift+S"))
 				{
-					m_ActiveScene = CreateRef<Scene>();
-					SceneSerializer serializer(m_ActiveScene);
-					serializer.Deserialize("assets/scenes/Example.skale");
+					
 				}
 				if (ImGui::MenuItem("Exit")) Engine::Application::Get().Close();
 				ImGui::EndMenu();
