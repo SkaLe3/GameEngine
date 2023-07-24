@@ -32,7 +32,7 @@ namespace Engine{
 
 
 		ProjectionType GetProjectionType() const { return m_ProjectionType; }
-		void SetProjectionType(ProjectionType type) { m_ProjectionType = type; }
+		void SetProjectionType(ProjectionType type) { m_ProjectionType = type; RecalculateProjection(); }
 	private:
 		void RecalculateProjection();
 

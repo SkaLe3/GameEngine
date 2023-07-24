@@ -94,13 +94,13 @@ namespace Engine {
 				ImGui::Checkbox("Primary", &cameraComponent.Primary);
 
 				const char* projectionTypeStrings[] = { "Perspective", "Orthographic" };
-				size_t currentProjectionTypeIndex = (int)camera.GetProjectionType();
+				int32_t currentProjectionTypeIndex = (int32_t)camera.GetProjectionType();
 				if (ImGui::BeginCombo("Projection", projectionTypeStrings[currentProjectionTypeIndex]))
 				{
-					for (int i = 0; i < 2; i++)
+					for (int32_t i = 0; i < 2; i++)
 					{
-						bool isSelected = (currentProjectionTypeIndex == i);
-						if (ImGui::Selectable(projectionTypeStrings[i], isSelected));
+						const bool isSelected = (currentProjectionTypeIndex == i);
+						if (ImGui::Selectable(projectionTypeStrings[i], isSelected))
 						{
 							currentProjectionTypeIndex = i;
 							camera.SetProjectionType((SceneCamera::ProjectionType)i);
