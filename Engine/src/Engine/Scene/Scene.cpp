@@ -38,7 +38,7 @@ namespace Engine {
 		m_Registry.destroy(entity);
 	}
 
-	void Scene::OnUpdate(Timestep ts)
+	void Scene::OnUpdateRuntime(Timestep ts)
 	{
 		{
 			m_Registry.view<NativeScriptComponent>().each([=](auto entity, auto& nsc)
