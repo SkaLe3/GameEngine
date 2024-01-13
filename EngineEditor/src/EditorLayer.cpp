@@ -72,9 +72,8 @@ namespace Engine {
 		if (m_ViewportFocused)
 		{
 			m_CameraController.OnUpdate(ts);
-			m_EditorCamera.OnUpdate(ts);
-
 		}
+		m_EditorCamera.OnUpdate(ts);
 
 		Engine::Renderer2D::ResetStats();
 		m_Framebuffer->Bind();
